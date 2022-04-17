@@ -1,0 +1,10 @@
+# id tinyint primary key auto_increment not null,
+# dog_name varchar(40) not null,
+# breed varchar(40) not null,
+# age tinyint not null,
+# weight tinyint not null,
+# energy_level enum("Couch Potato", "Moderate", "energetic"),
+# temperament tinyint not null,
+# dog_owner tinyint not null,
+# foreign key(temperament) references dog_category(id),
+# foreign key(dog_owner) references customer(id));
