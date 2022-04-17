@@ -1,9 +1,17 @@
-# id smallint primary key auto_increment not null,
-# customer_id tinyint not null,
-# dog_id tinyint not null,
-# activity_id tinyint not null,
-# event_id tinyint not null,
-# foreign key(customer_id) references customer(id),
-# foreign key(dog_id) references dog(id),
-# foreign key(activity_id) references activity(id),
-# foreign key(event_id) references event_info(id));
+from application import db
+from dataclasses import dataclass
+
+
+@dataclass
+class Booking(db.Model):
+    id: int
+    customer_id: int
+    dog_id: int
+    activity_id: int
+    event: int
+
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
+    dog_id = db.Column(db.Integer, db.ForeignKey("dog.id"), nullable=False)
+    activity_id = db.Column(db.Integer, db.ForeignKey("activity.id"), nullable=False)
+    event = db.Column(db.Integer, db.ForeignKey("event_info.id"), nullable=False)

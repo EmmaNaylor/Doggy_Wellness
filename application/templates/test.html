@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genre Page</title>
+</head>
+<body>
+<div>
+{% for activity in activities %}
+   <p>{{activity.activity_name}} {{activity.activity_description}} {{activity.activity_type}} {{activity.supervision}}</p>
+{% endfor %}
+    <br>
+    {{ message }}
+</div>
+</body>
+</html>

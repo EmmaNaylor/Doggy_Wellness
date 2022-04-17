@@ -1,6 +1,7 @@
 from application import db
 from dataclasses import dataclass
 
+
 @dataclass
 class Activity(db.Model):
     id: int
@@ -14,4 +15,3 @@ class Activity(db.Model):
     description = db.Column(db.String(500), nullable=False)
     activity_type = db.Column(db.String(15), nullable=False)
     supervision = db.Column(db.String(15), nullable=True)
-

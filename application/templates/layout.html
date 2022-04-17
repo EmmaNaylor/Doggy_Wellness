@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{title}} - Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-
+    <h1>{{ title }} Page</h1>
+{% block body_content %}{% endblock %}
+<hr>
+{% block footer_content %}{% endblock %}
 </body>
 </html>

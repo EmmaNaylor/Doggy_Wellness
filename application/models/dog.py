@@ -1,10 +1,23 @@
-# id tinyint primary key auto_increment not null,
-# dog_name varchar(40) not null,
-# breed varchar(40) not null,
-# age tinyint not null,
-# weight tinyint not null,
-# energy_level enum("Couch Potato", "Moderate", "energetic"),
-# temperament tinyint not null,
-# dog_owner tinyint not null,
-# foreign key(temperament) references dog_category(id),
-# foreign key(dog_owner) references customer(id));
+from application import db
+from dataclasses import dataclass
+
+
+@dataclass
+class Dog(db.Model):
+    id: int
+    dog_name: str
+    breed: str
+    age: int
+    size: str
+    energy_level: int
+    temperament: int
+    dog_owner: int
+
+    id = db.Column(db.Integer, primary_key=True)
+    dog_name = db.Column(db.String(40), nullable=False)
+    breed = db.Column(db.String(40), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    size = db.Column(db.String(12), nullable=True)
+    energy_level = db.Column(db.String(12), nullable=True)
+    temperament = db.Column(db.Integer, db.ForeignKey("dog_category.id"), nullable=False)
+    dog_owner = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
