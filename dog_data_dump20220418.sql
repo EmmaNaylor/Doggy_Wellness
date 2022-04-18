@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `dog_wellness_service` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `dog_wellness_service`;
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: dog_wellness_service
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `activity` (
   `activity_type` enum('Group Class','1 to 1') NOT NULL,
   `supervision` enum('Stay and Play','Drop and Go') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `activity` (
 
 LOCK TABLES `activity` WRITE;
 /*!40000 ALTER TABLE `activity` DISABLE KEYS */;
-INSERT INTO `activity` VALUES (1,'Yoga','A mindful class for you and your dog. Enjoy gentle stretches and holds to prepare your body for the day.','1 to 1','Stay and Play'),(2,'Canine Cardio','Get your dog\\\'s heart pumping with this high intensity work out.','1 to 1','Drop and Go'),(3,'Canine Circuit Training','From pat and squats to short sprints, this class will give you and your dog a full body workout.','Group Class','Stay and Play'),(4,'Doggy Zumba','Who says dogs can\\\'t dance? Some simple steps to fun music which will be sure to get you and your dog on your feet.','Group Class','Stay and Play'),(5,'Park Run','A classic 5k park run set up in an enclosed space for peace of mind. Take it as fast or slow as you like\\!','Group Class','Stay and Play');
+INSERT INTO `activity` VALUES (1,'Yoga','A mindful class for you and your dog. Enjoy gentle stretches and holds to prepare your body for the day.','1 to 1','Stay and Play'),(2,'Canine Cardio','Get your dog\\\'s heart pumping with this high intensity work out.','1 to 1','Drop and Go'),(3,'Canine Circuit Training','From pat and squats to short sprints, this class will give you and your dog a full body workout.','Group Class','Stay and Play'),(4,'Doggy Zumba','Who says dogs can\\\'t dance? Some simple steps to fun music which will be sure to get you and your dog on your feet.','Group Class','Stay and Play'),(5,'Park Run','A classic 5k park run set up in an enclosed space for peace of mind. Take it as fast or slow as you like\\!','Group Class','Stay and Play'),(6,'Boxer-cise','A bouncy class suitable for larger breeds','Group Class','Stay and Play');
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,10 +121,8 @@ CREATE TABLE `customer` (
   `last_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telephone_number` varchar(12) NOT NULL,
-  `address` smallint NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `address` (`address`),
-  CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`address`) REFERENCES `full_address` (`id`)
+  `dog_name` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -134,7 +132,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'John','Smith','johnsmith@madeupemail.com','07821935481',1),(2,'Angelina','Jolie','ang@madeupemail.com','07821935482',2),(3,'David','Tennant','doctorwho@tardis.com','07821000487',3),(4,'Sherlock','Holmes','sherlockandwatson@spy.com','07821115487',4),(5,'Art','Garfunkel','soundofsilence@folk.com','07833335487',5);
+INSERT INTO `customer` VALUES (1,'John','Smith','johnsmith@madeupemail.com','07821935481',''),(2,'Angelina','Jolie','ang@madeupemail.com','07821935482',''),(3,'David','Tennant','doctorwho@tardis.com','07821000487',''),(4,'Sherlock','Holmes','sherlockandwatson@spy.com','07821115487',''),(5,'Art','Garfunkel','soundofsilence@folk.com','07833335487','');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,11 +146,11 @@ DROP TABLE IF EXISTS `dog`;
 CREATE TABLE `dog` (
   `id` tinyint NOT NULL AUTO_INCREMENT,
   `dog_name` varchar(40) NOT NULL,
-  `breed` varchar(40) NOT NULL,
-  `age` tinyint NOT NULL,
+  `breed` varchar(40) DEFAULT NULL,
+  `age` tinyint DEFAULT NULL,
   `size` enum('large','small','medium') DEFAULT NULL,
   `energy_level` enum('Couch Potato','Moderate','energetic') DEFAULT NULL,
-  `temperament` tinyint NOT NULL,
+  `temperament` tinyint DEFAULT NULL,
   `dog_owner` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   KEY `temperament` (`temperament`),
@@ -294,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-17 18:04:06
+-- Dump completed on 2022-04-18 21:02:44

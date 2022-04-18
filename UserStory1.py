@@ -1,10 +1,10 @@
-#userstory1: As a dog owner, I want to see a list of suitable classes for my dog so that i can book a class
+# userstory1: As a dog owner, I want to see a list of suitable classes for my dog so that i can book a class
 
 def user_input():
     dog_size = input("what size is your dog? ")
     dog_energy = input("how energetic is your dog? ")
-    exercise_classes = ["yoga", "zumba", "obstacle course", "dog fun run"]
-    return dog_size, dog_energy
+    # exercise_classes = ["yoga", "zumba", "obstacle course", "dog fun run"]
+    give_recommendation(dog_size, dog_energy)
 
 def give_recommendation(dog_size, dog_energy):
 
@@ -33,7 +33,7 @@ def give_recommendation(dog_size, dog_energy):
         print(amount)
 
 
-give_recommendation(*user_input())
 
 
-#CODE WORKS
+
+# CODE WORKS
