@@ -1,4 +1,6 @@
 import json
+
+import pymysql
 from flask import render_template, request, jsonify, escape
 from application import service
 from application import app
@@ -19,6 +21,8 @@ def show_activities():
         error = "There are no books to display"
     return render_template('test.html', activities=details, message=error)
 
+conn = pymysql.connect(host = 'localhost',user = 'root',passwd='password',db='dog_wellness_service')
+
 
 @app.route("/recommend")
 def recommend():
@@ -37,17 +41,12 @@ def recommend():
     )
 
 
-@app.route("/recommend/<size>")
-def give_recommendation(size):
-    if size == "small":
-        amount = "once a week"
-        return str(amount)
-    elif size == "medium":
-        amount = "twice a week"
-        return str(amount)
-    elif size == "large":
-        amount = "three times a week"
-        return str(amount)
+@app.route("/recommendation", methods=['GET', 'POST'])
+def give_recommendation():
+    cursor = conn.cursor()
+    cursor.execute('SELECT size FROM dog_category')
+    sizelist = cursor.fetchall()
+    return render_template('testing2.html',sizelist=sizelist)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
