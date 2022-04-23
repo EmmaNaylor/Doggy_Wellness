@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!--=============== REMIX ICONS ===============-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!--BOOTSTRAP-->
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <title>Classes</title>
+  </head>
+  <body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">
+         <i><img src="assets/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Paw-sitive
+        </a>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="classes.html" class="nav__link">Classes</a>
+            </li>
+            <li class="nav__item">
+              <a href="recommendations.html" class="nav__link">Recommendations</a>
+            </li>
+          </ul>
+
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+
+        <div class="nav__btns">
+          <!-- Theme change button -->
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+
+<!--CLASSES TIMETABLE-->
+<section class="classes section container" id="classes">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <h1>Our classes</h1>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Class</th>
+          <th scope="col">Details</th>
+          <th scope="col">Class Type</th>
+          <th scope="col">Supervision</th>
+          <th scope="col">Upcoming Dates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="clickable"
+          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+        >
+          >
+          <th scope="row">1</th>
+          <td>Yoga</td>
+          <td>
+            A mindful class for you and your dog. Enjoy gentle stretches and
+            holds to prepare your body for the day.
+          </td>
+          <td>1 to 1</td>
+          <td>Stay and Play</td>
+          <td>
+            <ul>
+              <li>29/06/2022, 07:30AM-08:30AM</li>
+              <li>30/07/2022, 07:30AM-08:30AM</li>
+            </ul>
+          </td>
+        </tr>
+        <tr
+          class="clickable"
+          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+        >
+          >
+          <th scope="row">1</th>
+          <td>Canine Cardio</td>
+          <td>
+            Get your dog's heart pumping with this high intensity work out.
+          </td>
+          <td>1 to 1</td>
+          <td>Drop and Go</td>
+          <td>
+            <ul>
+              <li>27/05/2022, 10:30AM-11:30AM</li>
+              <li>15/10/2022, 6:30PM-07:30PM</li>
+            </ul>
+          </td>
+        </tr>
+        <tr
+          class="clickable"
+          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+        >
+          >
+          <th scope="row">1</th>
+          <td>Canine Circuit Training</td>
+          <td>
+            From pat and squats to short sprints, this class will give you and
+            your dog a full body workout.
+          </td>
+          <td>Group Class</td>
+          <td>Stay and Play</td>
+          <td>
+            <ul>
+              <li>28/05/2022, 10:30AM-11:30AM</li>
+            </ul>
+          </td>
+        </tr>
+        <tr
+          class="clickable"
+          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+        >
+          >
+          <th scope="row">1</th>
+          <td>Doggy Zumba</td>
+          <td>
+            Who says dogs can't dance? Some simple steps to fun music which will
+            be sure to get you and your dog on your feet.
+          </td>
+          <td>Group Class</td>
+          <td>Stay and Play</td>
+          <td>
+            <ul>
+              <li>01/07/2022, 06:30PM-07:30PM</li>
+              <li>25/08/2022, 06:30PM-07:30PM</li>
+            </ul>
+          </td>
+        </tr>
+        <tr
+          class="clickable"
+          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+        >
+          >
+          <th scope="row">1</th>
+          <td>Park Run</td>
+          <td>
+            A classic 5k park run set up in an enclosed space for peace of mind.
+            Take it as fast or slow as you like!
+          </td>
+          <td>Group Class</td>
+          <td>Stay and Play</td>
+          <td>
+            <ul>
+              <li>23/09/2022, 09:00AM-09:30AM</li>
+              <li>14/09/2022, 09:00AM-10:00AM</li>
+              <li>26/11/2022, 06:30PM-07:30PM</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </section>
+
+<!--BOOKING FORM-->
+      <section class="booking section container" id="booking">
+        <div class="booking__container grid">
+          <div class="booking__box">
+            <h1 class="section__title">
+              Book now
+            </h1>
+          </div>
+
+          <form action="" class="contact__form">
+            <div class="contact__inputs">
+              <div class="contact__content">
+                <input type="email" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">First Name</label>
+              </div>
+
+              <div class="contact__content">
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Last Name</label>
+              </div>
+
+              <div class="contact__content">
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Email</label>
+              </div>
+
+              <div class="contact__content">
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Phone Number</label>
+              </div>
+
+              <div class="contact__content">
+                <label class="visually-hidden" for="autoSizingSelect">Class</label>
+    <select class="form-select" id="autoSizingSelect">
+      <option selected>Class</option>
+      <option value="1">Yoga</option>
+      <option value="2">Canine Cardio</option>
+      <option value="3">Canine Circuit Training</option>
+      <option value="4">Doggy Zumba</option>
+      <option value="5">Park Run</option>
+      <option value="6">Boxer-cise</option>
+    </select>
+  </div>
+  <div class="contact__content">
+                <label class="visually-hidden" for="autoSizingSelect">Date</label>
+    <select class="form-select" id="autoSizingSelect">
+      <option selected>Date</option>
+      <option value="1">02/05/22</option>
+      <option value="2">03/05/22</option>
+      <option value="3">04/05/22</option>
+      <option value="4">05/05/22</option>
+      <option value="5">06/05/22</option>
+    </select>
+  </div>
+  <div class="contact__content">
+                <label class="visually-hidden" for="autoSizingSelect">Time</label>
+    <select class="form-select" id="autoSizingSelect">
+      <option selected>Time</option>
+      <option value="1">9am</option>
+      <option value="1">1pm</option>
+      <option value="2">5pm</option>
+    </select>
+  </div>
+
+            <button class="button button--flex">
+              Book
+              <i class="ri-arrow-right-up-line button__icon"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+
+
+      <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+      <div class="footer__container container grid">
+        <div class="footer__content">
+          <a href="#" class="footer__logo">
+            <i class="ri-leaf-line footer__logo-icon"></i> Body Pawsitive
+          </a>
+                    <h3 class="footer__title">
+                        Subscribe to our newsletter <br> to stay update
+                    </h3>
+
+                    <div class="footer__subscribe">
+                        <input type="email" placeholder="Enter your email" class="footer__input">
+
+                        <button class="button button--flex footer__button">
+                            Subscribe
+                            <i class="ri-arrow-right-up-line button__icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">Our Address</h3>
+
+          <ul class="footer__data">
+            <li class="footer__information">123 Sky House</li>
+            <li class="footer__information">Leeds</li>
+            <li class="footer__information">L9 876</li>
+          </ul>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">Contact Us</h3>
+
+          <ul class="footer__data">
+            <li class="footer__information">+999 888 777</li>
+            <li class="footer__information">user@email.com</li>
+
+            <div class="footer__social">
+              <a href="https://www.facebook.com/" class="footer__social-link">
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a href="https://www.instagram.com/" class="footer__social-link">
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a href="https://twitter.com/" class="footer__social-link">
+                <i class="ri-twitter-fill"></i>
+              </a>
+            </div>
+          </ul>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">We accept all credit cards</h3>
+
+          <div class="footer__cards">
+            <img src="assets/img/card1.png" alt="" class="footer__card" />
+            <img src="assets/img/card2.png" alt="" class="footer__card" />
+            <img src="assets/img/card3.png" alt="" class="footer__card" />
+            <img src="assets/img/card4.png" alt="" class="footer__card" />
+          </div>
+        </div>
+      </div>
+
+      <p class="footer__copy">&#169; Body Paw-sitive. All rigths reserved.</p>
+    </footer>
+
+    <!--=============== SCROLL UP ===============-->
+    <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-fill scrollup__icon"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL ===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
