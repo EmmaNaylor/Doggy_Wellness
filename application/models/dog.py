@@ -10,8 +10,9 @@ class Dog(db.Model):
     age: int
     size: str
     energy_level: int
-    temperament: int
+    temperament: str
     dog_owner: int
+
 
     id = db.Column(db.Integer, primary_key=True)
     dog_name = db.Column(db.String(40), nullable=False)
@@ -21,4 +22,5 @@ class Dog(db.Model):
     energy_level = db.Column(db.String(12), nullable=True)
     temperament = db.Column(db.Integer, db.ForeignKey("dog_category.id"), nullable=True)
     dog_owner = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
+
 

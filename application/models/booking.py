@@ -5,10 +5,6 @@ from dataclasses import dataclass
 @dataclass
 class Booking(db.Model):
     id: int
-    customer_id: int
-    dog_id: int
-    activity_id: int
-    event: int
 
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
