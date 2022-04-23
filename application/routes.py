@@ -10,8 +10,16 @@ from application.models.dog import Dog
 
 
 @app.route('/', methods=['GET'])
-def hello():
+def index():
     return render_template("index.html", title="Home")
+
+@app.route('/classes.html', methods=['GET'])
+def classes():
+    return render_template("classes.html", title="Classes")
+
+@app.route('/recommendations.html', methods=['GET'])
+def recommendations():
+    return render_template("recommendations.html", title="Recommendations")
 
 
 @app.route('/activity', methods=['GET'])
