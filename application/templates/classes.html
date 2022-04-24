@@ -30,23 +30,24 @@
     <title>Classes</title>
   </head>
   <body>
+  {% block body_content %}
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="#" class="nav__logo">
+        <a href="/" class="nav__logo">
          <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Paw-sitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="index.html" class="nav__link">Home</a>
+              <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="classes.html" class="nav__link">Classes</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations.html" class="nav__link">Recommendations</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
           </ul>
 
@@ -88,7 +89,7 @@
           class="clickable"
           onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
         >
-          >
+
           <th scope="row">1</th>
           <td>Yoga</td>
           <td>
@@ -108,8 +109,8 @@
           class="clickable"
           onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
         >
-          >
-          <th scope="row">1</th>
+
+          <th scope="row">2</th>
           <td>Canine Cardio</td>
           <td>
             Get your dog's heart pumping with this high intensity work out.
@@ -127,8 +128,8 @@
           class="clickable"
           onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
         >
-          >
-          <th scope="row">1</th>
+
+          <th scope="row">3</th>
           <td>Canine Circuit Training</td>
           <td>
             From pat and squats to short sprints, this class will give you and
@@ -146,8 +147,8 @@
           class="clickable"
           onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
         >
-          >
-          <th scope="row">1</th>
+
+          <th scope="row">4</th>
           <td>Doggy Zumba</td>
           <td>
             Who says dogs can't dance? Some simple steps to fun music which will
@@ -166,8 +167,8 @@
           class="clickable"
           onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
         >
-          >
-          <th scope="row">1</th>
+
+          <th scope="row">5</th>
           <td>Park Run</td>
           <td>
             A classic 5k park run set up in an enclosed space for peace of mind.
@@ -180,6 +181,24 @@
               <li>23/09/2022, 09:00AM-09:30AM</li>
               <li>14/09/2022, 09:00AM-10:00AM</li>
               <li>26/11/2022, 06:30PM-07:30PM</li>
+            </ul>
+          </td>
+        </tr>
+        <tr
+          class="clickable"
+          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+        >
+
+          <th scope="row">6</th>
+          <td>Boxer-cise</td>
+          <td>
+            A bouncy class suitable for larger breeds!
+          </td>
+          <td>Group Class</td>
+          <td>Stay and Play</td>
+          <td>
+            <ul>
+              <li>23/09/2022, 09:00AM-09:30AM</li>
             </ul>
           </td>
         </tr>
@@ -217,6 +236,11 @@
               <div class="contact__content">
                 <input type="text" placeholder=" " class="contact__input" />
                 <label for="" class="contact__label">Phone Number</label>
+              </div>
+
+              <div class="contact__content">
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Dog Name</label>
               </div>
 
               <div class="contact__content">
@@ -260,9 +284,10 @@
         </div>
       </section>
 
-
+{% endblock %}
       <!--==================== FOOTER ====================-->
     <footer class="footer section">
+      {% block footer_content %}
       <div class="footer__container container grid">
         <div class="footer__content">
           <a href="#" class="footer__logo">
@@ -286,9 +311,9 @@
           <h3 class="footer__title">Our Address</h3>
 
           <ul class="footer__data">
-            <li class="footer__information">123 Sky House</li>
-            <li class="footer__information">Leeds</li>
-            <li class="footer__information">L9 876</li>
+            <li class="footer__information">The Dog House</li>
+            <li class="footer__information">Barking</li>
+            <li class="footer__information">IG11 0AB</li>
           </ul>
         </div>
 
@@ -297,7 +322,7 @@
 
           <ul class="footer__data">
             <li class="footer__information">+999 888 777</li>
-            <li class="footer__information">user@email.com</li>
+            <li class="footer__information">bodypawsitive@email.com</li>
 
             <div class="footer__social">
               <a href="https://www.facebook.com/" class="footer__social-link">
@@ -326,6 +351,7 @@
       </div>
 
       <p class="footer__copy">&#169; Body Paw-sitive. All rigths reserved.</p>
+      {% endblock %}
     </footer>
 
     <!--=============== SCROLL UP ===============-->

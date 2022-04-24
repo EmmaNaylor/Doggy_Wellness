@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -30,23 +31,24 @@
     <title>Classes</title>
   </head>
   <body>
+  {% block body_content %}
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="#" class="nav__logo">
+        <a href="/" class="nav__logo">
          <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Paw-sitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="index.html" class="nav__link">Home</a>
+              <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="classes.html" class="nav__link">Classes</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations.html" class="nav__link">Recommendations</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
           </ul>
 
@@ -67,9 +69,11 @@
     </header>
 
     <main class="main">
-
+  {% endblock %}
       <!--==================== FOOTER ====================-->
+
     <footer class="footer section">
+      {% block footer_content %}
       <div class="footer__container container grid">
         <div class="footer__content">
           <a href="#" class="footer__logo">
@@ -93,9 +97,9 @@
           <h3 class="footer__title">Our Address</h3>
 
           <ul class="footer__data">
-            <li class="footer__information">123 Sky House</li>
-            <li class="footer__information">Leeds</li>
-            <li class="footer__information">L9 876</li>
+            <li class="footer__information">The Dog House</li>
+            <li class="footer__information">Barking</li>
+            <li class="footer__information">IG11 0AB</li>
           </ul>
         </div>
 
@@ -104,7 +108,7 @@
 
           <ul class="footer__data">
             <li class="footer__information">+999 888 777</li>
-            <li class="footer__information">user@email.com</li>
+            <li class="footer__information">bodypawsitive@email.com</li>
 
             <div class="footer__social">
               <a href="https://www.facebook.com/" class="footer__social-link">
@@ -132,7 +136,8 @@
         </div>
       </div>
 
-      <p class="footer__copy">&#169; Body Paw-sitive. All rigths reserved.</p>
+      <p class="footer__copy">&#169; Body Paw-sitive. All rights reserved.</p>
+      {% endblock %}
     </footer>
 
     <!--=============== SCROLL UP ===============-->
