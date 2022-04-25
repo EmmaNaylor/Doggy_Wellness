@@ -1,5 +1,5 @@
 import json
-
+import mysql.connector
 import pymysql
 from flask import render_template, request, jsonify, escape
 from application import service
@@ -13,9 +13,9 @@ from application.models.booking import Booking
 from application.models.event_info import Event
 
 
-@app.route('/', methods=['GET'])
-def index():
-    return render_template("index.html", title="Home")
+# @app.route('/', methods=['GET'])
+# def index():
+#     return render_template("index.html", title="Home")
 
 
 @app.route('/classes', methods=['GET'])
@@ -37,9 +37,6 @@ def show_activities():
     return render_template('test.html', activities=details)
 
 
-conn = pymysql.connect(host='localhost', user='root', passwd='password', db='dog_wellness_service')
-
-
 @app.route("/recommend")
 def recommend():
     size = (request.args.get("size", ""))
@@ -59,15 +56,16 @@ def recommend():
 
 @app.route("/recommendation", methods=['GET', 'POST'])
 def give_recommendation():
+    conn = pymysql.connect(host='localhost', user='root', passwd='password', db='dog_wellness_service')
     cursor = conn.cursor()
     cursor.execute('SELECT size FROM dog_category')
     sizelist = cursor.fetchall()
     return render_template('testing2.html', sizelist=sizelist)
 
 
-@app.route('/signup', methods=['GET', 'POST'])
-def book_a_class():
-    form = SignUpForm()
+@app.route('/', methods=['GET', 'POST'])
+def sign_up():
+    form = SignUpForm(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
             return "Thanks! You're signed up!"
@@ -76,17 +74,15 @@ def book_a_class():
         last_name = form.last_name.data
         email = form.email.data
         telephone_number = form.telephone_number.data
-        dog_name = form.dog_name.data
         recaptcha = form.recaptcha
         customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-        dog = Dog(dog_name=dog_name, dog_owner=customer.first_name)
-        service.add_new_customer(customer, dog)
-    return render_template('new_customer_form.html', form=form)
+        service.add_new_customer(customer)
+    return render_template("index.html", form=form, title="Home")
 
 
 @app.route('/bookaclass', methods=['GET', 'POST'])
 def booking():
-    form = bookingForm()
+    form = bookingForm(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
             return "Thanks! You're signed up!"
@@ -95,18 +91,14 @@ def booking():
         last_name = form.last_name.data
         email = form.email.data
         telephone_number = form.telephone_number.data
-        dog_name = form.dog_name.data
-        activity_id = form.activity.query
-        event_id = form.event.query
-        form.activity.query = Activity.query.all
-        form.event.query = Event.query.all
-
-        if form.validate_on_submit():
-            return "Thanks! You're signed up!"
-
+        recaptcha = form.recaptcha
+        # dog_name = form.dog_name.data
+        # form.activity.query = Activity.query.all
+        # form.event.query = Event.query.all
+        # activity_id = form.activity.query
+        # event_id = form.event.query
         customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-        classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name)
+        # classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name)
         service.add_new_customer(customer)
-        service.add_new_booking(classbooking)
-
+        # service.add_new_booking(classbooking)
     return render_template('bookingformtest.html', form=form)

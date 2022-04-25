@@ -57,22 +57,11 @@
             </ul>
         <div class="row">
             <div class = "mb-3">
-                <div class="col-md-2">{{ form.dog_name.label (class_="form-label") }}</div>
-                <div class="col-md-10">{{ form.dog_name(class_="form-control", size =32) }}</div>
-            </div>
-            <ul>
-            {% for error in form.dog_name.errors %}
-                <li style="color:red;">{{ error }}</li>
-            {% endfor %}
-            </ul>
-        <div class="row">
-            <div class = "mb-3">
                 <div class="col-md-2">{{ form.sign_up(class_="btn btn-primary mb-3") }}</div>
             </div>
         </div>
             {{ form.recaptcha }}
         {{ message }}
-            </div>
             </div>
     </form>
 </div>

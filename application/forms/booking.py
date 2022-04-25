@@ -15,7 +15,7 @@ class bookingForm(FlaskForm):
     activity = QuerySelectField(query_factory=activity_name_query, allow_blank=False, get_label='activity_name')
     event = QuerySelectField(query_factory=event_query, allow_blank=False, get_label='event_date')
     recaptcha = RecaptchaField()
-    sign_up = SubmitField('Book Class')
+    book_class = SubmitField('Book Class')
 
 
 

@@ -7,6 +7,7 @@ Base = declarative_base()
 
 @dataclass
 class Booking(db.Model):
+    __tablename__ = 'booking'
     id: int
     customer_id: int
     activity_id: int

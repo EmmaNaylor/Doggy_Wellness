@@ -8,6 +8,6 @@ class SignUpForm(FlaskForm):
     last_name = StringField('Last Name: ', validators=[InputRequired("Please enter your last name")])
     email = StringField('Email Address: ', validators=[InputRequired("An email address is required")])
     telephone_number = StringField('Contact Tel: ', validators=[InputRequired("A telephone number is required")])
-    dog_name = StringField("Dog's name: '", validators=[InputRequired("Please enter your dog's name")])
+    # dog_name = StringField("Dog's name: '", validators=[InputRequired("Please enter your dog's name")])
     recaptcha = RecaptchaField()
     sign_up = SubmitField('Sign Up')

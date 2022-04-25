@@ -7,8 +7,8 @@ def activities():
     return Activity.query.all()
 
 
-def add_new_customer(customer, dog):
-    db.session.add(customer, dog)
+def add_new_customer(customer):
+    db.session.add(customer)
     db.session.commit()
 
 
