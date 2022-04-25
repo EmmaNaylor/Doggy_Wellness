@@ -1,6 +1,7 @@
 from application import db
 from dataclasses import dataclass
-
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
 
 @dataclass
 class Recommendation(db.Model):

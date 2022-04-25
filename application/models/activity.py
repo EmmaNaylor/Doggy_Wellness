@@ -1,6 +1,9 @@
 from application import db
 from dataclasses import dataclass
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 
 @dataclass
 class Activity(db.Model):
@@ -15,3 +18,7 @@ class Activity(db.Model):
     description = db.Column(db.String(500), nullable=False)
     activity_type = db.Column(db.String(15), nullable=False)
     supervision = db.Column(db.String(15), nullable=True)
+    bookings = db.relationship("Activity", backref='booking')
+
+    def __repr__(self):
+        return '[Choice {}]'.format(self.activity_name)

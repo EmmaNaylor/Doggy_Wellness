@@ -20,7 +20,8 @@ class Customer(db.Model):
     last_name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     telephone_number = db.Column(db.String(12), nullable=True)
-    dogs = db.relationship("Dog", backref="customer")
+
+    # dogs = db.relationship("Dog", backref="customer")
 
 
 # Customer.dogs = relationship("Dogs", back_populates="customer")

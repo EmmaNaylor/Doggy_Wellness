@@ -1,6 +1,9 @@
 from application import db
 from dataclasses import dataclass
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 
 @dataclass
 class Event(db.Model):
@@ -15,7 +18,7 @@ class Event(db.Model):
     location: str
 
     id = db.Column(db.Integer, primary_key=True)
-    activity_id = db.Column(db.Integer, nullable=False)
+    activity_id = db.Column(db.Integer, db.ForeignKey("activity.id"), nullable=False)
     event_date = db.Column(db.String(8), nullable=False)
     start_time = db.Column(db.String(8), nullable=False)
     end_time = db.Column(db.String(8), nullable=True)
@@ -23,3 +26,7 @@ class Event(db.Model):
     cost = db.Column(db.Integer, nullable=True)
     capacity = db.Column(db.Integer, nullable=True)
     location = db.Column(db.String(15), nullable=True)
+    activities = db.relationship("Activity", backref='event_info')
+
+    def __repr__(self):
+        return '[Choice {}]'.format(self.event_date)
