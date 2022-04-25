@@ -72,7 +72,6 @@ def book_a_class():
         telephone_number = form.telephone_number.data
         dog_name = form.dog_name.data
         recaptcha = form.recaptcha
-
         customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
         dog = Dog(dog_name=dog_name, dog_owner=customer.first_name)
         service.add_new_customer(customer, dog)
