@@ -41,7 +41,7 @@ def show_activities():
     return render_template('test.html', activities=details)
 
 
-conn = pymysql.connect(host='localhost', user='root', passwd='taliablain', db='dog_wellness_service')
+#conn = pymysql.connect(host='localhost', user='root', passwd='taliablain', db='dog_wellness_service')
 
 
 @app.route("/recommend")
@@ -115,4 +115,4 @@ def booking():
         service.add_new_booking(classbooking)
 
     return render_template('bookingformtest.html', form=form)
-conn = pymysql.connect(host='localhost', user='root', passwd='taliablain', db='dog_wellness_service')
+#conn = pymysql.connect(host='localhost', user='root', passwd='taliablain', db='dog_wellness_service')
