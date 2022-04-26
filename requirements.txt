@@ -7,3 +7,4 @@ WTForms_sqlalchemy
 SQLAlchemy==1.4.35
 Flask-Assets
 mysql-connector-python
+flask-bootstrap

@@ -387,7 +387,7 @@
         
           </div>
 
-          <form method='POST' action="" class="contact__form">
+          <form method='POST' action="/" class="contact__form">
             {{ form.csrf_token }}
 
     <main>
@@ -412,7 +412,7 @@
                 {{ form.telephone_number.label (class_="contact__label") }}
               </div>
             </div>
-            <button class="button button--flex">
+            <button class="button button--flex" type="submit">
               Sign Up
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
