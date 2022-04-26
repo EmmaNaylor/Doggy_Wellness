@@ -12,7 +12,7 @@ assets = Environment(app)
 js = Bundle('main.js', 'scrollreveal.min.js', output='gen/main.js')
 assets.register('all_js', js)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:password@localhost/dog_wellness_service"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:taliablain@localhost/dog_wellness_service"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'YOUR_SECRET_KEY'
 app.config['RECAPTCHA_PUBLIC_KEY'] = '6Lc335UfAAAAAOqkJJi0K84_rA_ut9ddvWvGUWsH'

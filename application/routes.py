@@ -1,5 +1,5 @@
 import json
-
+import mysql.connector
 import pymysql
 from flask import render_template, request, jsonify, escape
 from application import service
@@ -11,6 +11,10 @@ from application.models.customer import Customer
 from application.models.dog import Dog
 from application.models.booking import Booking
 from application.models.event_info import Event
+
+
+conn = mysql.connector.connect(user='root', password='taliablain', host='localhost', database='dog_wellness_service')
+
 
 
 @app.route('/', methods=['GET'])
@@ -37,7 +41,7 @@ def show_activities():
     return render_template('test.html', activities=details)
 
 
-conn = pymysql.connect(host='localhost', user='root', passwd='password', db='dog_wellness_service')
+#conn = pymysql.connect(host='localhost', user='root', passwd='taliablain', db='dog_wellness_service')
 
 
 @app.route("/recommend")
@@ -110,3 +114,4 @@ def booking():
         service.add_new_booking(classbooking)
 
     return render_template('bookingformtest.html', form=form)
+#conn = pymysql.connect(host='localhost', user='root', passwd='taliablain', db='dog_wellness_service')
