@@ -7,21 +7,25 @@ def activities():
     return Activity.query.all()
 
 
-def add_new_customer(customer, dog):
-    db.session.add(customer, dog)
+def add_new_customer(customer):
+    db.session.add(customer)
     db.session.commit()
 
-
 def activity_name_query():
+    print(Activity.query)
     return Activity.query
 
 
 def event_query():
+    print(Event.query)
     return Event.query
 
 
-def add_new_booking(classbooking):
-    db.session.add(classbooking)
+def add_new_booking(customer, classbooking):
+    customer.booking = []
+    customer.booking.append(classbooking)
+    db.session.add(customer)
+    # db.session.add(classbooking)
     db.session.commit()
 
     # id = db.Column(db.Integer, primary_key=True)

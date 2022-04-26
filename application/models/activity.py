@@ -7,6 +7,7 @@ Base = declarative_base()
 
 @dataclass
 class Activity(db.Model):
+    __tablename__ = 'activity'
     id: int
     activity_name: str
     description: str
@@ -18,7 +19,8 @@ class Activity(db.Model):
     description = db.Column(db.String(500), nullable=False)
     activity_type = db.Column(db.String(15), nullable=False)
     supervision = db.Column(db.String(15), nullable=True)
-    bookings = db.relationship("Activity", backref='booking')
+    details = db.relationship("Event", backref='activity', lazy=True)
+    bookings = db.relationship('Booking', backref='activity', lazy=True)
 
     def __repr__(self):
         return '[Choice {}]'.format(self.activity_name)

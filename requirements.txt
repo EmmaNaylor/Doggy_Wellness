@@ -3,5 +3,8 @@ flask==2.1.1
 flask-wtf
 pymysql
 WTForms==3.0.1
+WTForms_sqlalchemy
 SQLAlchemy==1.4.35
 Flask-Assets
+mysql-connector-python
+flask-bootstrap

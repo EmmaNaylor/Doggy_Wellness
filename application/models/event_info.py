@@ -7,6 +7,7 @@ Base = declarative_base()
 
 @dataclass
 class Event(db.Model):
+    __tablename__ = 'event_info'
     id: int
     activity_id: int
     event_date: str
@@ -26,7 +27,7 @@ class Event(db.Model):
     cost = db.Column(db.Integer, nullable=True)
     capacity = db.Column(db.Integer, nullable=True)
     location = db.Column(db.String(15), nullable=True)
-    activities = db.relationship("Activity", backref='event_info')
+    booking_info = db.relationship("Booking", backref='event_info')
 
     def __repr__(self):
         return '[Choice {}]'.format(self.event_date)
