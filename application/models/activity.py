@@ -23,4 +23,4 @@ class Activity(db.Model):
     bookings = db.relationship('Booking', backref='activity', lazy=True)
 
     def __repr__(self):
-        return '[Choice {}]'.format(self.activity_name)
+        return '{}'.format(self.id)

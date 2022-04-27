@@ -21,15 +21,13 @@ def event_query():
     return Event.query
 
 
-def add_new_booking(customer, classbooking):
-    customer.booking = []
-    customer.booking.append(classbooking)
-    db.session.add(customer)
-    # db.session.add(classbooking)
+def add_new_booking(new_customer, classbooking, dogbooked):
+    new_customer.booking = []
+    new_customer.booking.append(classbooking)
+    new_customer.booking.append(dogbooked)
+    db.session.add(new_customer)
+    db.session.add(classbooking)
+    db.session.add(dogbooked)
     db.session.commit()
 
-    # id = db.Column(db.Integer, primary_key=True)
-    # customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
-    # activity_id = db.Column(db.Integer, db.ForeignKey("activity.id"), nullable=False)
-    # event_id = db.Column(db.Integer, db.ForeignKey("event_info.id"), nullable=False)
-    # dog_name = db.Column(db.String(40), nullable=True)
+

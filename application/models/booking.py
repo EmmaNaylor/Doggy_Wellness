@@ -18,5 +18,5 @@ class Booking(db.Model):
     customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
     activity_id = db.Column(db.Integer, db.ForeignKey("activity.id"), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey("event_info.id"), nullable=False)
-    dog_name = db.Column(db.String(40), nullable=True)
+    dog_name = db.Column(db.Integer, db.ForeignKey("dog.id"), nullable=False)
 

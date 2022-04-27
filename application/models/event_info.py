@@ -30,4 +30,4 @@ class Event(db.Model):
     booking_info = db.relationship("Booking", backref='event_info')
 
     def __repr__(self):
-        return '[Choice {}]'.format(self.event_date)
+        return '{}'.format(self.id)
