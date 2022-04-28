@@ -15,16 +15,6 @@ from application.models.event_info import Event
 from flask_bootstrap import Bootstrap
 from wtforms_sqlalchemy.fields import QuerySelectField
 
-# @app.route('/', methods=['GET'])
-# def index():
-#     return render_template("index.html", title="Home")
-
-
-@app.route('/classes', methods=['GET'])
-def classes():
-    return render_template("classes.html", title="Classes")
-
-
 @app.route('/recommendations', methods=['GET'])
 def recommendations():
     return render_template("recommendations.html", title="Recommendations")
@@ -82,11 +72,10 @@ def sign_up():
     return render_template("index.html", form=form, title="Home")
 
 
-@app.route('/bookaclass', methods=['GET', 'POST'])
+@app.route('/classes', methods=['GET', 'POST'])
 def booking():
     form = bookingForm()
     if request.method == 'POST':
-        if form.validate_on_submit():
             form = bookingForm()
             first_name = form.first_name.data
             last_name = form.last_name.data
@@ -94,15 +83,20 @@ def booking():
             telephone_number = form.telephone_number.data
             recaptcha = form.recaptcha
             dog_name = form.dog_name.data
-            activity_id = form.activity.query
-            event_id = form.event.query
-            customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-            print(customer)
-            classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name, customer_id=first_name)
+            form.activity.query = Activity.query
+            form.event.query = Event.query
+            activity_id = form.activity.data
+            event_id = form.event.data
+            new_customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
+            print(new_customer)
+            classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name, customer=new_customer)
             print(classbooking)
+            dogbooked = Dog(customer=new_customer, dog_name=classbooking.dog_name)
+            print(dogbooked)
             # service.add_new_customer(customer)
-            service.add_new_booking(customer, classbooking)
-            return "Thanks! You're signed up!"
-    return render_template('bookingformtest.html', form=form)
+            service.add_new_booking(new_customer, classbooking, dogbooked)
+            if form.validate_on_submit():
+                return "Thanks! You're signed up!"
+    return render_template('classes.html', form=form)
 
 

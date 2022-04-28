@@ -5,6 +5,7 @@ from wtforms.validators import input_required, email
 from flask_wtf import FlaskForm
 from os import getenv
 from flask_assets import Environment, Bundle
+from wtforms_sqlalchemy.fields import QuerySelectField
 
 app = Flask(__name__)
 assets = Environment(app)
