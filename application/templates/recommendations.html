@@ -31,22 +31,23 @@
   </head>
   <body>
     <!--==================== HEADER ====================-->
+    {% block body_content %}
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="index.html" class="nav__logo">
+        <a href="/" class="nav__logo">
          <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="index.html" class="nav__link">Home</a>
+              <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations.html" class="nav__link">Recommendations</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
             <li class="nav__item">
-              <a href="classes.html" class="nav__link">Classes</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
           </ul>
 
@@ -67,7 +68,7 @@
     </header>
 
     <main class="main">
-
+  {% endblock %}
 
       <!--RECOMMENDATION CALCULATOR-->
   <!--==================== STEPS ====================-->
@@ -155,7 +156,7 @@
               <p class="steps__card-description">
                 We think (name) would love (classes). Join us for pawsome fun!
               </p>
-              <a href ="classes.html">
+              <a href ="classes">
               <button class="button button--flex" style="position:absolute; bottom:5%">
               Book now
             </button>
@@ -165,6 +166,7 @@
       </section>
 
       <!--==================== FOOTER ====================-->
+      {% block footer_content %}
     <footer class="footer section">
       <div class="footer__container container grid">
         <div class="footer__content">
@@ -229,6 +231,7 @@
       </div>
 
       <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
+      {% endblock %}
     </footer>
 
     <!--=============== SCROLL UP ===============-->

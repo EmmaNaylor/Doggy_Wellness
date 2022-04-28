@@ -31,22 +31,23 @@
   </head>
   <body>
     <!--==================== HEADER ====================-->
+    {% block body_content %}
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="index.html" class="nav__logo">
+        <a href="/" class="nav__logo">
          <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="#index.html" class="nav__link">Home</a>
+              <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations.html" class="nav__link">Recommendations</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
             <li class="nav__item">
-              <a href="classes.html" class="nav__link">Classes</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
           </ul>
 
@@ -384,34 +385,35 @@
             <h3 class="section_title">Subscribe and stay up to date</h3>
           </div>
 
-          <form action="" class="contact__form">
+          <form method='POST' action="/" class="contact__form">
+            {{ form.csrf_token }}
             <div class="contact__inputs">
               <div class="contact__content">
-                <input type="email" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">First Name</label>
+                {{ form.first_name (class_="contact__input")}}
+                {{ form.first_name.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Last Name</label>
+                {{ form.last_name (class_="contact__input")}}
+                {{ form.last_name.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Email</label>
+                {{ form.email (class_="contact__input")}}
+                {{ form.email.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Phone Number</label>
+                {{ form.telephone_number (class_="contact__input")}}
+                {{ form.telephone_number.label (class_="contact__label") }}
               </div>
 
-              <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Address</label>
-              </div>
+<!--              <div class="contact__content">-->
+<!--                <input type="text" placeholder=" " class="contact__input" />-->
+<!--                <label for="" class="contact__label">Address</label>-->
+<!--              </div>-->
 
-            <button class="button button--flex">
+            <button class="button button--flex" type="submit">
               Sign Up
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
@@ -419,8 +421,9 @@
         </div>
       </section>
     </main>
-
+  {% endblock %}
     <!--==================== FOOTER ====================-->
+    {% block footer_content %}
     <footer class="footer section">
       <div class="footer__container container grid">
         <div class="footer__content">
@@ -485,6 +488,7 @@
       </div>
 
       <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
+      {% endblock %}
     </footer>
 
     <!--=============== SCROLL UP ===============-->

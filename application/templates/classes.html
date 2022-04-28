@@ -31,22 +31,23 @@
   </head>
   <body>
     <!--==================== HEADER ====================-->
+    {% block body_content %}
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="index.html" class="nav__logo">
-         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
+        <a href="/" class="nav__logo">
+         <i><img src="static/img/logo.png" class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="index.html" class="nav__link">Home</a>
+              <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations.html" class="nav__link">Recommendations</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
             <li class="nav__item">
-              <a href="classes.html" class="nav__link">Classes</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
           </ul>
 
@@ -77,7 +78,7 @@
       <h2 class="section__title-center classes_data">
               Our classes
             </h2>
-      <thead">
+      <thead>
         <tr>
           <th scope="col">Class</th>
           <th scope="col">Details</th>
@@ -204,71 +205,82 @@
             </h1><img src="static/img/bookingdog.png" alt="" class="booking__img" />
           </div>
 
-          <form action="" class="contact__form">
+          <form method='POST' action="/classes" class="contact__form">
+            {{ form.csrf_token }}
             <div class="contact__inputs">
               <div class="contact__content">
-                <input type="email" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">First Name</label>
+                {{ form.first_name (class_="contact__input")}}
+                {{ form.first_name.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Last Name</label>
+                {{ form.last_name (class_="contact__input")}}
+                {{ form.last_name.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Email</label>
+                {{ form.email (class_="contact__input")}}
+                {{ form.email.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
-                <input type="text" placeholder=" " class="contact__input" />
-                <label for="" class="contact__label">Phone Number</label>
+                {{ form.telephone_number (class_="contact__input")}}
+                {{ form.telephone_number.label (class_="contact__label") }}
+              </div>
+
+              <div class="contact__content">
+                {{ form.dog_name (class_="contact__input")}}
+                {{ form.dog_name.label (class_="contact__label") }}
               </div>
 
               <div class="contact__content">
                 <label class="visually-hidden" for="autoSizingSelect">Class</label>
-    <select class="form-select" id="autoSizingSelect">
-      <option selected>Class</option>
-      <option value="1">Yoga</option>
-      <option value="2">Canine Cardio</option>
-      <option value="3">Canine Circuit Training</option>
-      <option value="4">Doggy Zumba</option>
-      <option value="5">Park Run</option>
-      <option value="6">Boxer-cise</option>
-    </select>
+                {{ form.activity (class_="form-select", id="autoSizingSelect") }}
+<!--    <select class="form-select" id="autoSizingSelect">-->
+<!--      <option selected>Class</option>-->
+<!--      <option value="1">Yoga</option>-->
+<!--      <option value="2">Canine Cardio</option>-->
+<!--      <option value="3">Canine Circuit Training</option>-->
+<!--      <option value="4">Doggy Zumba</option>-->
+<!--      <option value="5">Park Run</option>-->
+<!--      <option value="6">Boxer-cise</option>-->
+<!--    </select>-->
   </div>
   <div class="contact__content">
                 <label class="visually-hidden" for="autoSizingSelect">Date</label>
-    <select class="form-select" id="autoSizingSelect">
-      <option selected>Date</option>
-      <option value="1">02/05/22</option>
-      <option value="2">03/05/22</option>
-      <option value="3">04/05/22</option>
-      <option value="4">05/05/22</option>
-      <option value="5">06/05/22</option>
-    </select>
-  </div>
-  <div class="contact__content">
-                <label class="visually-hidden" for="autoSizingSelect">Time</label>
-    <select class="form-select" id="autoSizingSelect">
-      <option selected>Time</option>
-      <option value="1">9am</option>
-      <option value="1">1pm</option>
-      <option value="2">5pm</option>
-    </select>
-    <br>
+    {{ form.event (class_="form-select", id="autoSizingSelect") }}
+<!--    <select class="form-select" id="autoSizingSelect">-->
+<!--      <option selected>Date</option>-->
+<!--      <option value="1">02/05/22</option>-->
+<!--      <option value="2">03/05/22</option>-->
+<!--      <option value="3">04/05/22</option>-->
+<!--      <option value="4">05/05/22</option>-->
+<!--      <option value="5">06/05/22</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="contact__content">-->
+<!--                <label class="visually-hidden" for="autoSizingSelect">Time</label>-->
+<!--    <select class="form-select" id="autoSizingSelect">-->
+<!--      <option selected>Time</option>-->
+<!--      <option value="1">9am</option>-->
+<!--      <option value="1">1pm</option>-->
+<!--      <option value="2">5pm</option>-->
+<!--    </select>-->
+<!--    <br>-->
 
-            <button class="button button--flex">
+            <button class="button button--flex" type="submit">
               Book
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
+         </div>
           </form>
         </div>
       </section>
 
+{% endblock %}
 
       <!--==================== FOOTER ====================-->
+      {% block footer_content %}
     <footer class="footer section">
       <div class="footer__container container grid">
         <div class="footer__content">
@@ -333,6 +345,7 @@
       </div>
 
       <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
+      {% endblock %}
     </footer>
 
     <!--=============== SCROLL UP ===============-->
@@ -345,5 +358,6 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="static/js/main.js"></script>
+    </main>
   </body>
 </html>
