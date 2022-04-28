@@ -30,24 +30,23 @@
     <title>Homepage</title>
   </head>
   <body>
-  {% block body_content %}
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="/" class="nav__logo">
-         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Paw-sitive
+        <a href="index.html" class="nav__logo">
+         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="/" class="nav__link">Home</a>
+              <a href="#index.html" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="classes" class="nav__link">Classes</a>
+              <a href="recommendations.html" class="nav__link">Recommendations</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations" class="nav__link">Recommendations</a>
+              <a href="classes.html" class="nav__link">Classes</a>
             </li>
           </ul>
 
@@ -74,8 +73,8 @@
           <img src="static/img/dog1.png" alt="" class="home__img" />
 
           <div class="home__data">
-            <h1 class="home__title">BODY PAW-SITIVE</h1>
-            <p class="home__description">Unleashing your dogs potential</p>
+            <h1 class="home__title">BODY PAWSITIVE</h1>
+            <p class="home__description">Unleash your dogs potential</p>
             <a href="#about" class="button button--flex">
               Explore <i class="ri-arrow-right-down-line button__icon"></i>
             </a>
@@ -307,7 +306,7 @@
                 <p class="questions__description">
                   Exercising keeps your dog healthy and limber while reducing
                   behavioural problems. It also helps your dog build trust and
-                  confidence in you and in their environment. Dog owners enjoy
+                  confidence in you and in their environment. </br> Dog owners enjoy
                   numerous health and social benefits, such as improved
                   cardiovascular fitness, lower blood pressure, stronger muscle decreased
                   stress
@@ -383,36 +382,36 @@
               Join the pack <br />
             </h2>
             <h3 class="section_title">Subscribe and stay up to date</h3>
-
-        
           </div>
 
-          <form method='POST' action="/" class="contact__form">
-            {{ form.csrf_token }}
-
-    <main>
+          <form action="" class="contact__form">
             <div class="contact__inputs">
               <div class="contact__content">
-                {{ form.first_name (class_="contact__input")}}
-                {{ form.first_name.label (class_="contact__label") }}
-                </div>
-
-              <div class="contact__content">
-                {{ form.last_name (class_="contact__input")}}
-                {{ form.last_name.label (class_="contact__label") }}
+                <input type="email" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">First Name</label>
               </div>
 
+              <div class="contact__content">
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Last Name</label>
+              </div>
 
               <div class="contact__content">
-                {{ form.email (class_="contact__input")}}
-                {{ form.email.label (class_="contact__label") }}
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Email</label>
               </div>
+
               <div class="contact__content">
-                {{ form.telephone_number (class_="contact__input")}}
-                {{ form.telephone_number.label (class_="contact__label") }}
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Phone Number</label>
               </div>
-            </div>
-            <button class="button button--flex" type="submit">
+
+              <div class="contact__content">
+                <input type="text" placeholder=" " class="contact__input" />
+                <label for="" class="contact__label">Address</label>
+              </div>
+
+            <button class="button button--flex">
               Sign Up
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
@@ -420,10 +419,9 @@
         </div>
       </section>
     </main>
-  {% endblock %}
+
     <!--==================== FOOTER ====================-->
     <footer class="footer section">
-      {% block footer_content %}
       <div class="footer__container container grid">
         <div class="footer__content">
           <a href="#" class="footer__logo">
@@ -447,9 +445,9 @@
           <h3 class="footer__title">Our Address</h3>
 
           <ul class="footer__data">
-            <li class="footer__information">The Dog House</li>
-            <li class="footer__information">Barking</li>
-            <li class="footer__information">IG11 0AB</li>
+            <li class="footer__information">123 Sky House</li>
+            <li class="footer__information">Leeds</li>
+            <li class="footer__information">L9 876</li>
           </ul>
         </div>
 
@@ -458,7 +456,7 @@
 
           <ul class="footer__data">
             <li class="footer__information">+999 888 777</li>
-            <li class="footer__information">bodypawsitive@email.com</li>
+            <li class="footer__information">user@email.com</li>
 
             <div class="footer__social">
               <a href="https://www.facebook.com/" class="footer__social-link">
@@ -486,8 +484,7 @@
         </div>
       </div>
 
-      <p class="footer__copy">&#169; Body Paw-sitive. All rigths reserved.</p>
-      {% endblock %}
+      <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
     </footer>
 
     <!--=============== SCROLL UP ===============-->
@@ -496,9 +493,6 @@
     </a>
 
     <!--=============== SCROLL REVEAL ===============-->
-<!--    {% assets "main.js" %}-->
-<!--    <script type="test/javascript" src="{{ ASSET_URL }}"></script>-->
-<!--    {% endassets %}-->
     <script src="static/js/scrollreveal.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
