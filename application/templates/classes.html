@@ -30,12 +30,12 @@
     <title>Classes</title>
   </head>
   <body>
-  {% block body_content %}
     <!--==================== HEADER ====================-->
+    {% block body_content %}
     <header class="header" id="header">
       <nav class="nav container">
         <a href="/" class="nav__logo">
-         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Paw-sitive
+         <i><img src="static/img/logo.png" class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
@@ -44,10 +44,10 @@
               <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="classes" class="nav__link">Classes</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations" class="nav__link">Recommendations</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
           </ul>
 
@@ -69,14 +69,17 @@
 
     <main class="main">
 
+
 <!--CLASSES TIMETABLE-->
+
 <section class="classes section container" id="classes">
   <div class="table-responsive">
-    <table class="table table-hover">
-      <h1>Our classes</h1>
+    <table class="classes_data">
+      <h2 class="section__title-center classes_data">
+              Our classes
+            </h2>
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Class</th>
           <th scope="col">Details</th>
           <th scope="col">Class Type</th>
@@ -86,12 +89,9 @@
       </thead>
       <tbody>
         <tr
-          class="clickable"
-          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+          class="table-hover"
         >
-
-          <th scope="row">1</th>
-          <td>Yoga</td>
+          <th scope="row">Yoga</th>
           <td>
             A mindful class for you and your dog. Enjoy gentle stretches and
             holds to prepare your body for the day.
@@ -100,18 +100,15 @@
           <td>Stay and Play</td>
           <td>
             <ul>
-              <li>29/06/2022, 07:30AM-08:30AM</li>
-              <li>30/07/2022, 07:30AM-08:30AM</li>
+              <li><b>29/06/2022</b> 07:30AM-08:30AM</li>
+              <li><b>30/07/2022</b> 07:30AM-08:30AM</li>
             </ul>
           </td>
         </tr>
-        <tr
-          class="clickable"
-          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
-        >
-
-          <th scope="row">2</th>
-          <td>Canine Cardio</td>
+<tr
+          class="table-hover"
+        >          
+          <th scope="row">Canine Cardio</th>
           <td>
             Get your dog's heart pumping with this high intensity work out.
           </td>
@@ -119,18 +116,15 @@
           <td>Drop and Go</td>
           <td>
             <ul>
-              <li>27/05/2022, 10:30AM-11:30AM</li>
-              <li>15/10/2022, 6:30PM-07:30PM</li>
+              <li><b>27/05/2022</b> 10:30AM-11:30AM</li>
+              <li><b>15/10/2022</b> 6:30PM-07:30PM</li>
             </ul>
           </td>
-        </tr>
-        <tr
-          class="clickable"
-          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
-        >
-
-          <th scope="row">3</th>
-          <td>Canine Circuit Training</td>
+</tr>
+<tr
+          class="table-hover"
+        >          
+          <th scope="row">Canine Circuit Training</th>
           <td>
             From pat and squats to short sprints, this class will give you and
             your dog a full body workout.
@@ -139,17 +133,15 @@
           <td>Stay and Play</td>
           <td>
             <ul>
-              <li>28/05/2022, 10:30AM-11:30AM</li>
+              <li><b>28/05/2022</b> 10:30AM-11:30AM</li>
             </ul>
           </td>
-        </tr>
-        <tr
-          class="clickable"
-          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+</tr>
+<tr
+          class="table-hover"
         >
-
-          <th scope="row">4</th>
-          <td>Doggy Zumba</td>
+          
+          <th scope="row">Doggy Zumba</th>
           <td>
             Who says dogs can't dance? Some simple steps to fun music which will
             be sure to get you and your dog on your feet.
@@ -158,18 +150,16 @@
           <td>Stay and Play</td>
           <td>
             <ul>
-              <li>01/07/2022, 06:30PM-07:30PM</li>
-              <li>25/08/2022, 06:30PM-07:30PM</li>
+              <li><b>01/07/2022</b> 06:30PM-07:30PM</li>
+              <li><b>25/08/2022</b> 06:30PM-07:30PM</li>
             </ul>
           </td>
-        </tr>
-        <tr
-          class="clickable"
-          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+          </tr>
+          <tr
+          class="table-hover"
         >
-
-          <th scope="row">5</th>
-          <td>Park Run</td>
+          
+          <th scope="row">Park Run</th>
           <td>
             A classic 5k park run set up in an enclosed space for peace of mind.
             Take it as fast or slow as you like!
@@ -178,46 +168,41 @@
           <td>Stay and Play</td>
           <td>
             <ul>
-              <li>23/09/2022, 09:00AM-09:30AM</li>
-              <li>14/09/2022, 09:00AM-10:00AM</li>
-              <li>26/11/2022, 06:30PM-07:30PM</li>
+              <li><b>23/09/2022</b> 09:00AM-09:30AM</li>
+              <li><b>14/09/2022</b> 09:00AM-10:00AM</li>
+              <li><b>26/11/2022</b> 06:30PM-07:30PM</li>
             </ul>
           </td>
-        </tr>
-        <tr
-          class="clickable"
-          onclick="window.location='https://miro.com/app/board/uXjVO8ENfFQ=/'"
+          </tr>
+          <tr
+          class="table-hover"
         >
-
-          <th scope="row">6</th>
-          <td>Boxer-cise</td>
+          
+          <th scope="row">Boxer-cise</th>
           <td>
-            A bouncy class suitable for larger breeds!
+            A bouncy class suitable for larger breeds.
           </td>
-          <td>Group Class</td>
+          <td>1 to 1</td>
           <td>Stay and Play</td>
           <td>
             <ul>
-              <li>23/09/2022, 09:00AM-09:30AM</li>
+              <li><b>29/06/2022</b> 07:30AM-08:30AM</li>
+              <li><b>30/07/2022</b> 07:30AM-08:30AM</li>
             </ul>
           </td>
-        </tr>
+          </tr>
       </tbody>
     </table>
   </div>
   </section>
 
-
-
-
-
 <!--BOOKING FORM-->
-      <section class="booking section container" id="booking">
-        <div class="booking__container grid">
-          <div class="booking__box">
-            <h1 class="section__title">
-              Book now
-            </h1>
+      <section class="contact section container" id="contact">
+        <div class="contact__container grid">
+          <div class="contact__box">
+            <h1 class="contact__title-center">
+              Book your class now
+            </h1><img src="static/img/bookingdog.png" alt="" class="booking__img" />
           </div>
 
           <form method='POST' action="/classes" class="contact__form">
@@ -226,42 +211,32 @@
               <div class="contact__content">
                 {{ form.first_name (class_="contact__input")}}
                 {{ form.first_name.label (class_="contact__label") }}
-<!--                <input type="text" placeholder=" " class="contact__input" />-->
-<!--                <label for="" class="contact__label">First Name</label>-->
               </div>
 
               <div class="contact__content">
                 {{ form.last_name (class_="contact__input")}}
                 {{ form.last_name.label (class_="contact__label") }}
-<!--                <input type="text" placeholder=" " class="contact__input" />-->
-<!--                <label for="" class="contact__label">Last Name</label>-->
               </div>
 
               <div class="contact__content">
                 {{ form.email (class_="contact__input")}}
                 {{ form.email.label (class_="contact__label") }}
-<!--                <input type="text" placeholder=" " class="contact__input" />-->
-<!--                <label for="" class="contact__label">Email</label>-->
               </div>
 
               <div class="contact__content">
                 {{ form.telephone_number (class_="contact__input")}}
                 {{ form.telephone_number.label (class_="contact__label") }}
-<!--                <input type="text" placeholder=" " class="contact__input" />-->
-<!--                <label for="" class="contact__label">Phone Number</label>-->
               </div>
 
               <div class="contact__content">
                 {{ form.dog_name (class_="contact__input")}}
                 {{ form.dog_name.label (class_="contact__label") }}
-<!--                <input type="text" placeholder=" " class="contact__input" />-->
-<!--                <label for="" class="contact__label">Dog Name</label>-->
               </div>
 
               <div class="contact__content">
                 <label class="visually-hidden" for="autoSizingSelect">Class</label>
+                {{ form.activity (class_="form-select", id="autoSizingSelect") }}
 <!--    <select class="form-select" id="autoSizingSelect">-->
-      {{ form.activity (class_="form-select", id="autoSizingSelect") }}
 <!--      <option selected>Class</option>-->
 <!--      <option value="1">Yoga</option>-->
 <!--      <option value="2">Canine Cardio</option>-->
@@ -269,45 +244,44 @@
 <!--      <option value="4">Doggy Zumba</option>-->
 <!--      <option value="5">Park Run</option>-->
 <!--      <option value="6">Boxer-cise</option>-->
-    </select>
+<!--    </select>-->
   </div>
   <div class="contact__content">
                 <label class="visually-hidden" for="autoSizingSelect">Date</label>
+    {{ form.event (class_="form-select", id="autoSizingSelect") }}
 <!--    <select class="form-select" id="autoSizingSelect">-->
-      {{ form.event (class_="form-select", id="autoSizingSelect") }}
 <!--      <option selected>Date</option>-->
 <!--      <option value="1">02/05/22</option>-->
 <!--      <option value="2">03/05/22</option>-->
 <!--      <option value="3">04/05/22</option>-->
 <!--      <option value="4">05/05/22</option>-->
 <!--      <option value="5">06/05/22</option>-->
-    </select>
-  </div>
+<!--    </select>-->
+<!--  </div>-->
 <!--  <div class="contact__content">-->
 <!--                <label class="visually-hidden" for="autoSizingSelect">Time</label>-->
 <!--    <select class="form-select" id="autoSizingSelect">-->
-<!--&lt;!&ndash;      <option selected>Time</option>&ndash;&gt;-->
-<!--&lt;!&ndash;      <option value="1">9am</option>&ndash;&gt;-->
-<!--&lt;!&ndash;      <option value="1">1pm</option>&ndash;&gt;-->
-<!--&lt;!&ndash;      <option value="2">5pm</option>&ndash;&gt;-->
+<!--      <option selected>Time</option>-->
+<!--      <option value="1">9am</option>-->
+<!--      <option value="1">1pm</option>-->
+<!--      <option value="2">5pm</option>-->
 <!--    </select>-->
-<!--  </div>-->
+<!--    <br>-->
 
             <button class="button button--flex" type="submit">
-              Book Class
+              Book
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
+         </div>
           </form>
         </div>
       </section>
 
-
-
-
 {% endblock %}
+
       <!--==================== FOOTER ====================-->
-    <footer class="footer section">
       {% block footer_content %}
+    <footer class="footer section">
       <div class="footer__container container grid">
         <div class="footer__content">
           <a href="#" class="footer__logo">
@@ -331,9 +305,9 @@
           <h3 class="footer__title">Our Address</h3>
 
           <ul class="footer__data">
-            <li class="footer__information">The Dog House</li>
-            <li class="footer__information">Barking</li>
-            <li class="footer__information">IG11 0AB</li>
+            <li class="footer__information">123 Sky House</li>
+            <li class="footer__information">Leeds</li>
+            <li class="footer__information">L9 876</li>
           </ul>
         </div>
 
@@ -342,7 +316,7 @@
 
           <ul class="footer__data">
             <li class="footer__information">+999 888 777</li>
-            <li class="footer__information">bodypawsitive@email.com</li>
+            <li class="footer__information">user@email.com</li>
 
             <div class="footer__social">
               <a href="https://www.facebook.com/" class="footer__social-link">
@@ -370,7 +344,7 @@
         </div>
       </div>
 
-      <p class="footer__copy">&#169; Body Paw-sitive. All rigths reserved.</p>
+      <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
       {% endblock %}
     </footer>
 
@@ -384,5 +358,6 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="static/js/main.js"></script>
+    </main>
   </body>
 </html>

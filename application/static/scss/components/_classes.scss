@@ -6,27 +6,6 @@
     display: grid;
     row-gap: 2rem;
   }
-  &__subtitle {
-    font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
-    color: var(--text-color);
-    margin-bottom: var(--mb-0-5);
-  }
-  &__description {
-    display: inline-flex;
-    align-items: center;
-    column-gap: 0.5rem;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-  }
-  &__icon {
-    font-size: 1.25rem;
-  }
-  &__inputs {
-    display: grid;
-    row-gap: 2rem;
-    margin-bottom: var(--mb-2-5);
-  }
   &__content {
     position: relative;
     height: 3rem;
