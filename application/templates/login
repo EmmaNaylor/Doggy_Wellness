@@ -27,7 +27,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="static/css/styles.css" />
 
-    <title>Classes</title>
+    <title>Login</title>
   </head>
   <body>
   {% block body_content %}
@@ -101,13 +101,15 @@
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
          </div>
+         <div>
+         <h5> Dont Have an account? </h5>
+         <h5><a href = "{{url_for('signup') }}">Sign Up Here</a></h5>
+         </div>
           </form>
         </div>
       </section>
-
-
     </div> <!-- /container -->
-   </main>
+
   {% endblock %}
       <!--==================== FOOTER ====================-->
 

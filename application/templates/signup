@@ -103,6 +103,10 @@
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
          </div>
+         <div>
+         <h5> Already have an account? </h5>
+         <h5><a href = "{{url_for('login') }}">Login Here</a></h5>
+         </div>
           </form>
         </div>
       </section>

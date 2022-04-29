@@ -18,5 +18,5 @@ class Member(UserMixin, db.Model):
     linked_customer = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
 
 @Login_Manager.user_loader
-def load_user(member_id):
-    return Member.query.get(int(member_id))
+def load_user(id):
+    return Member.query.get(int(id))
