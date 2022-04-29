@@ -27,15 +27,15 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="static/css/styles.css" />
 
-    <title>Recommendations</title>
+    <title>Classes</title>
   </head>
   <body>
+  {% block body_content %}
     <!--==================== HEADER ====================-->
-    {% block body_content %}
     <header class="header" id="header">
       <nav class="nav container">
         <a href="/" class="nav__logo">
-         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
+         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Paw-sitive
         </a>
 
         <div class="nav__menu" id="nav-menu">
@@ -44,10 +44,10 @@
               <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item">
-              <a href="recommendations" class="nav__link">Recommendations</a>
+              <a href="classes" class="nav__link">Classes</a>
             </li>
             <li class="nav__item">
-              <a href="classes" class="nav__link">Classes</a>
+              <a href="recommendations" class="nav__link">Recommendations</a>
             </li>
             <li class="nav__item">
               <a href="login" class="nav__link">Login</a>
@@ -73,107 +73,46 @@
       </nav>
     </header>
 
-    <main class="main">
-  {% endblock %}
+<!--  Login Form-->
+    <main>
+          <section class="contact section container" id="contact">
+        <div class="contact__container grid">
+          <div class="contact__box">
+            <h1 class="contact__title-center">
+              Login
+            </h1><img src="static/img/580b57fbd9996e24bc43bbd2.png" alt="" class="booking__img" />
+          </div>
 
-      <!--RECOMMENDATION CALCULATOR-->
-  <!--==================== STEPS ====================-->
-      <section class="steps section container">
-        <div class="steps__bg">
-          <h2 class="section__title-center steps__title">
-            <img src="static/img/logo.png">Unleash your dogs potential<img src="static/img/logo.png">
-          </h2>
-          <h3 class="steps__title-center" style="text-align: center;">Discover our exercise and class recommendations</h3>
-          <div class="steps__container grid">
-           <form>
+      <form method='POST' action="/login" class="contact__form">
+        {{ form.csrf_token }}
+            <div class="contact__inputs">
 
-    <div class="steps__card">
-  <div class="form-group">
-    <label for="Input">Name?</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="Select">Breed?</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Select...</option>
-      <option>American Bulldog</option>
-      <option>Beagle</option>
-      <option>Chihauhua</option>
-      <option>Dachsund</option>
-      <option>English Mastiff</option>
-      <option>French Spanial</option>
-      <option>Golden Retriever</option>
-      <option>Havanese</option>
-    </select>
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="Select2">Age?</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>Select...</option>
-      <option>0-3 years</option>
-      <option>4-7 years</option>
-      <option>8+ years</option>
-    </select>
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="Select3">Size?</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>Select...</option>
-      <option>Small (1-10kg)</option>
-      <option>Medium (11-20kg)</option>
-      <option>Large (21+kg)</option>
-    </select>
-    </div>
-    <br>
-<div class="form-group">
-  <label for="Select3">Temperament?</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>Select...</option>
-      <option>Calm</option>
-      <option>Average</option>
-      <option>Lively</option>
-    </select>
-    </div>
-    <br>
-    <button class="button button--flex">
-              Go
+              <div class="contact__content">
+        {{ form.email (class_="contact__input", type=email)}}
+        {{ form.email.label (class_="contact__label") }}
+                </div>
+
+              <div class="contact__content">
+        {{ form.password(class_="contact__input")}}
+        {{ form.password.label (class_="contact__label") }}
+              </div>
+                <button class="button button--flex" type="submit">
+              Login
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
-    </div>
-           </form>
-
-            
-           <img src="static/img/pawprints.png">
-  
-
-
-           <div class="steps__card">
-              <h4 class="results" style="text-align: center;">Your results...</h4><br>
-              <h3 class="steps__card-title">Exercise</h3>
-              <p class="steps__card-description">
-                (name) the (breed) needs around x amount of minutes of exercise each day! Yay for (name)!
-                (add in any specific guidance in relation to breed/size/age)
-              </p>
-              <br>
-              <h3 class="steps__card-title">Classes</h3>
-              <p class="steps__card-description">
-                We think (name) would love (classes). Join us for pawsome fun!
-              </p>
-              <a href ="classes">
-              <button class="button button--flex" style="position:absolute; bottom:5%">
-              Book now
-            </button>
-            </a>
-            </div>
-
+         </div>
+          </form>
+        </div>
       </section>
 
+
+    </div> <!-- /container -->
+   </main>
+  {% endblock %}
       <!--==================== FOOTER ====================-->
-      {% block footer_content %}
+
     <footer class="footer section">
+      {% block footer_content %}
       <div class="footer__container container grid">
         <div class="footer__content">
           <a href="#" class="footer__logo">
@@ -197,9 +136,9 @@
           <h3 class="footer__title">Our Address</h3>
 
           <ul class="footer__data">
-            <li class="footer__information">123 Sky House</li>
-            <li class="footer__information">Leeds</li>
-            <li class="footer__information">L9 876</li>
+            <li class="footer__information">The Dog House</li>
+            <li class="footer__information">Barking</li>
+            <li class="footer__information">IG11 0AB</li>
           </ul>
         </div>
 
@@ -208,7 +147,7 @@
 
           <ul class="footer__data">
             <li class="footer__information">+999 888 777</li>
-            <li class="footer__information">user@email.com</li>
+            <li class="footer__information">bodypawsitive@email.com</li>
 
             <div class="footer__social">
               <a href="https://www.facebook.com/" class="footer__social-link">
@@ -236,7 +175,7 @@
         </div>
       </div>
 
-      <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
+      <p class="footer__copy">&#169; Body Paw-sitive. All rights reserved.</p>
       {% endblock %}
     </footer>
 

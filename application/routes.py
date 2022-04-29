@@ -2,7 +2,7 @@ import json
 import mysql.connector
 import pymysql
 from flask_wtf import FlaskForm
-from flask import render_template, request, jsonify, escape
+from flask import render_template, request, jsonify, escape, url_for, redirect
 from application import service
 from application import app
 from application.forms.signUp import SignUpForm
@@ -10,10 +10,61 @@ from application.forms.booking import bookingForm
 from application.models.activity import Activity
 from application.models.customer import Customer
 from application.models.dog import Dog
+from application.models.member import Member
 from application.models.booking import Booking
 from application.models.event_info import Event
+from application.forms.login import LoginForm
+from application.forms.register import RegisterForm
 from flask_bootstrap import Bootstrap
 from wtforms_sqlalchemy.fields import QuerySelectField
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from email_validator import validate_email, EmailNotValidError
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request.form)
+        email = form.email.data
+        user_password = form.password.data
+        if form.validate_on_submit():
+            member = Member.query.filter_by(email=form.email.data).first()
+            if member:
+                if check_password_hash(member.user_password, form.password.data):
+                    login_user(member)
+                    return redirect(url_for('dashboard'))
+            return "Invalid username or password"
+    return render_template('login', form=form)
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.form)
+        email = form.email.data
+        user_password = form.password.data
+        if form.validate_on_submit():
+            hashed_password = generate_password_hash(form.password.data, method='sha256')
+            new_member = Member(email=email, user_password=hashed_password)
+            member_check = Member.query.filter_by(email=form.email.data).first()
+            if member_check:
+                return "Email is already in use"
+            service.add_new_member(new_member)
+            return redirect(url_for('dashboard'))
+    return render_template('signup', form=form)
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard', title="Dashboard", user=current_user.email)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 
 @app.route('/recommendations', methods=['GET'])
 def recommendations():
@@ -56,7 +107,8 @@ def give_recommendation():
 
 
 @app.route('/', methods=['GET', 'POST'])
-def sign_up():
+@app.route('/home', methods=['GET', 'POST'])
+def home():
     form = SignUpForm(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -69,7 +121,7 @@ def sign_up():
         recaptcha = form.recaptcha
         customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
         service.add_new_customer(customer)
-    return render_template("index.html", form=form, title="Home")
+    return render_template('index', form=form, title="Home")
 
 
 @app.route('/classes', methods=['GET', 'POST'])
@@ -97,6 +149,6 @@ def booking():
             service.add_new_booking(new_customer, classbooking, dogbooked)
             if form.validate_on_submit():
                 return "Thanks! You're signed up!"
-    return render_template('classes.html', form=form)
+    return render_template('classes', form=form)
 
 

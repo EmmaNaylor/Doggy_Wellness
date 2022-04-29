@@ -11,6 +11,10 @@ def add_new_customer(customer):
     db.session.add(customer)
     db.session.commit()
 
+def add_new_member(new_member):
+    db.session.add(new_member)
+    db.session.commit()
+
 def activity_name_query():
     print(Activity.query)
     return Activity.query
