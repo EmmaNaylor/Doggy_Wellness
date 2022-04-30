@@ -35,3 +35,25 @@ def add_new_booking(new_customer, classbooking, dogbooked):
     db.session.commit()
 
 
+def age_query():
+    ages = ['0-3 years', '4-7 years', '8+ years']
+    print(ages)
+    return ages
+
+def size_query():
+    sizes = ['small', 'medium', 'large']
+    print(sizes)
+    return sizes
+
+def temperament_query():
+    temperaments = ['couch potato', 'moderate', 'energetic']
+    return temperaments
+
+#def size_query():
+    #print(Category.query)
+    #return Category.query
+
+
+#def temperament_query():
+    #print(Temperament.query)
+    #return Temperament.query

@@ -12,6 +12,7 @@ from application.models.customer import Customer
 from application.models.dog import Dog
 from application.models.member import Member
 from application.models.booking import Booking
+from application.forms.recommendation_form import recommendation_form
 from application.models.event_info import Event
 from application.forms.login import LoginForm
 from application.forms.register import RegisterForm
@@ -66,9 +67,9 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/recommendations', methods=['GET'])
-def recommendations():
-    return render_template("recommendations.html", title="Recommendations")
+#@app.route('/recommendations', methods=['GET'])
+#def recommendations():
+    #return render_template("recommendations.html", title="Recommendations")
 
 
 @app.route('/activity', methods=['GET'])
@@ -150,5 +151,43 @@ def booking():
             if form.validate_on_submit():
                 return "Thanks! You're signed up!"
     return render_template('classes', form=form)
+
+@app.route("/recommendations", methods=['GET', 'POST'])
+def user_info():
+    form = recommendation_form()
+    if request.method == 'GET':
+        form = recommendation_form()
+        dog_name = form.dog_name.data
+        breed = form.breed.data
+        age = form.age.data
+        size = form.size.data
+        temperament = form.temperament.data
+        return render_template('recommendations.html', form=form)
+    if request.method == 'POST':
+        user_age = request.form['age']
+        user_size = request.form['size']
+        user_temperament = request.form.get['temperament']
+        print(user_age, user_size, user_temperament)
+        return render_template('recommendations.html', user_age=user_age, user_size=user_size, user_temperament=user_temperament)
+
+@app.route('/dropdown', methods=['GET', 'POST'])
+def dropdown():
+    if request.method == 'POST':
+        dog_size = request.form.get("sizes", None)
+        dog_age = request.form.get("ages", None)
+        dog_temperament = request.form.get("temperaments", None)
+        if dog_size!=None:
+            return render_template('recommendations.html', dog_size = dog_size)
+    return render_template('recommendations.html')
+
+
+
+
+
+#@app.route('/testing', methods=['GET', 'POST'])
+#def test():
+    #select = request.args.get('Select2')
+    #print(str(select))
+    #return str(select)
 
 
