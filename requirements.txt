@@ -8,3 +8,6 @@ SQLAlchemy==1.4.35
 Flask-Assets
 mysql-connector-python
 flask-bootstrap
+flask_login
+werkzeug==2.1.2
+email-validator

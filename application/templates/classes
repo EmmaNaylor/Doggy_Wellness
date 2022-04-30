@@ -49,6 +49,12 @@
             <li class="nav__item">
               <a href="classes" class="nav__link">Classes</a>
             </li>
+            <li class="nav__item">
+              <a href="login" class="nav__link">Login</a>
+            </li>
+            <li class="nav__item">
+              <a href="signup" class="nav__link">Signup</a>
+            </li>
           </ul>
 
           <div class="nav__close" id="nav-close">
