@@ -172,15 +172,15 @@ def user_info():
         return render_template('recommendations.html', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament)
 
 
-
-
-
-
-
 #@app.route('/testing', methods=['GET', 'POST'])
-#def test():
-    #select = request.args.get('Select2')
-    #print(str(select))
-    #return str(select)
+#def index():
+    #if request.method == 'POST':
+
+
+
+
+
+
+
 
 
