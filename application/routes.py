@@ -162,23 +162,16 @@ def user_info():
         age = form.age.data
         size = form.size.data
         temperament = form.temperament.data
-        return render_template('recommendations.html', form=form)
+        return render_template('recommendations.html', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament)
     if request.method == 'POST':
-        user_age = request.form['age']
-        user_size = request.form['size']
-        user_temperament = request.form.get['temperament']
-        print(user_age, user_size, user_temperament)
-        return render_template('recommendations.html', user_age=user_age, user_size=user_size, user_temperament=user_temperament)
+        dog_name = form.dog_name.data
+        breed = form.breed.data
+        age = form.age.data
+        size = form.size.data
+        temperament = form.temperament.data
+        return render_template('recommendations.html', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament)
 
-@app.route('/dropdown', methods=['GET', 'POST'])
-def dropdown():
-    if request.method == 'POST':
-        dog_size = request.form.get("sizes", None)
-        dog_age = request.form.get("ages", None)
-        dog_temperament = request.form.get("temperaments", None)
-        if dog_size!=None:
-            return render_template('recommendations.html', dog_size = dog_size)
-    return render_template('recommendations.html')
+
 
 
 

@@ -150,16 +150,15 @@
               <option value="Moderate">Moderate</option>
               <option value="Active">Active</option>
           </select>
-            </div>
-        <ul>
-        </ul>
+          </div>
+
+
           <input type="submit" value="Submit">
-        </form>
-        <div id="result">
-            {% if dog_size is defined %}
-                Your dog is: {{ dog_size }}
-            {% endif %}
-        </div>
+    </div>
+           </form>
+
+
+
             
            <img src="static/img/pawprints.png">
   
@@ -169,13 +168,12 @@
               <h4 class="results" style="text-align: center;">Your results...</h4><br>
               <h3 class="steps__card-title">Exercise</h3>
               <p class="steps__card-description">
-                (name) the (breed) needs around x amount of minutes of exercise each day! Yay for (name)!
-                (add in any specific guidance in relation to breed/size/age)
+                {{ dog_name }} the {{ breed }} needs around 60 amount of minutes of exercise each day! Yay for {{ dog_name }}!
               </p>
               <br>
               <h3 class="steps__card-title">Classes</h3>
               <p class="steps__card-description">
-                We think (name) would love (classes). Join us for pawsome fun!
+                We think {{ dog_name }} would love Doggy Zumba. Join us for pawsome fun!
               </p>
               <a href ="classes">
               <button class="button button--flex" style="position:absolute; bottom:5%">
