@@ -1,0 +1,36 @@
+{% extends 'testing2.html' %}
+{% block content %}
+    <div class="page">
+    <table>
+        <tr>
+            <form action="{{ url_for('new_task' }}" method="POST">
+        </tr>
+        <tr>
+            <td>
+                <label>name :</label>
+                <select id="mySelect" name="ages">
+                <option value="0-3 years">0-3 years</option>
+                <option value="4-7 years">4-7 years</option>
+                <option value="8+ years"> 8+ years</option>
+                <select name="ages">
+                    {% for age in ages %}
+                        {% if selected_age == age %}
+                            <option value="{{ age }}" selected="selected">{{ age }}</option>
+                        {% else %}
+                            <option value="{{ age }}" >{{ age }}</option>
+                        {% endif %}
+                    {% endfor %}
+
+                </select>
+            </select>
+            </td>
+            <td>
+            &nbsp;
+            &nbsp;
+            <input type="submit" value="Submit" />
+            </td>
+        </tr>
+            </form>
+    </table>
+{% endblock %}
+    </div>

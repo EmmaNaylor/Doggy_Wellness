@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+{% block body_content %}
+<div class='container-sm' style="width:50%">
+    <form method='POST' action=''>
+        <!-- provides CRSF protection, alongside secret key. Use on all POST forms -->
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class = "mb-3">
+                <div class="col-md-2">{{ form.dog_name.label (class_="form-label") }}</div>
+                <div class="col-md-10">{{ form.dog_name (class_="form-control", size =32)}}</div>
+            </div>
+        </div>
+        <ul>
+           {% for error in form.dog_name.errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+          <div class="row">
+            <div class = "mb-3">
+                <div class="col-md-2">{{ form.breed.label(class_="form-label")}}</div>
+                <div class="col-md-10">{{ form.breed(class_="form-control", size =32)}}</div>
+            </div>
+        </div>
+        <ul>
+            {% for error in form.breed.errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+        <div>
+        {{ form.age }}
+               </div>
+
+        <div>
+        {{ form.size }}
+               </div>
+
+        <div>
+        {{ form.temperament }}
+               </div>
+
+
+
+
+        <div class="row">
+            <div class = "mb-3">
+                <div class="col-md-2">{{ form.find_recommendations(class_="btn btn-primary mb-3") }}</div>
+            </div>
+        </div>
+            {{ form.recaptcha }}
+        {{ message }}
+            </div>
+            </div>
+    </form>
+
+
+{% endblock %}
+</body>
+</html>

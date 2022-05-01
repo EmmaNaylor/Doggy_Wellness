@@ -12,6 +12,7 @@ from application.models.customer import Customer
 from application.models.dog import Dog
 from application.models.member import Member
 from application.models.booking import Booking
+from application.forms.recommendation_form import recommendation_form
 from application.models.event_info import Event
 from application.forms.login import LoginForm
 from application.forms.register import RegisterForm
@@ -66,9 +67,9 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/recommendations', methods=['GET'])
-def recommendations():
-    return render_template("recommendations.html", title="Recommendations")
+#@app.route('/recommendations', methods=['GET'])
+#def recommendations():
+    #return render_template("recommendations.html", title="Recommendations")
 
 
 @app.route('/activity', methods=['GET'])
@@ -150,5 +151,36 @@ def booking():
             if form.validate_on_submit():
                 return "Thanks! You're signed up!"
     return render_template('classes', form=form)
+
+@app.route("/recommendations", methods=['GET', 'POST'])
+def user_info():
+    form = recommendation_form()
+    if request.method == 'GET':
+        form = recommendation_form()
+        dog_name = form.dog_name.data
+        breed = form.breed.data
+        age = form.age.data
+        size = form.size.data
+        temperament = form.temperament.data
+        return render_template('recommendations.html', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament)
+    if request.method == 'POST':
+        dog_name = form.dog_name.data
+        breed = form.breed.data
+        age = form.age.data
+        size = form.size.data
+        temperament = form.temperament.data
+        return render_template('recommendations.html', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament)
+
+
+#@app.route('/testing', methods=['GET', 'POST'])
+#def index():
+    #if request.method == 'POST':
+
+
+
+
+
+
+
 
 
