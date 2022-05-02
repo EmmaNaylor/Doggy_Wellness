@@ -6,7 +6,7 @@ from application.models import activity
 from application.service import activity_name_query, event_query
 
 
-class bookingForm(FlaskForm):
+class BookingForm(FlaskForm):
     first_name = StringField('First Name: ', validators=[InputRequired("Please enter your first name")])
     last_name = StringField('Last Name: ', validators=[InputRequired("Please enter your last name")])
     email = StringField('Email Address: ', validators=[InputRequired("An email address is required")])
