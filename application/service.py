@@ -34,4 +34,45 @@ def add_new_booking(new_customer, classbooking, dogbooked):
     db.session.add(dogbooked)
     db.session.commit()
 
+def age_query():
+    ages = ['0-3 years', '4-7 years', '8+ years']
+    print(ages)
+    return ages
 
+def size_query():
+    sizes = ['small', 'medium', 'large']
+    print(sizes)
+    return sizes
+
+def temperament_query():
+    temperament = ['couch potato', 'moderate', 'energetic']
+    print(temperament)
+    return temperament
+
+def size_check(dog_size):
+
+    if dog_size == "Small":
+        amount = "30 minutes"
+        return amount
+
+    elif dog_size == "Medium":
+        amount = "60 minutes"
+        return amount
+
+    elif dog_size == "Large":
+        amount = "90 minutes"
+        return amount
+
+def fav_class(dog_energy):
+
+    if dog_energy == "Couch Potato":
+        recommendation = "Yoga"
+        return recommendation
+
+    elif dog_energy == "Moderate":
+        recommendation = "Doggy Zumba"
+        return recommendation
+
+    elif dog_energy == "Active":
+        recommendation = "Canine Circuit Training"
+        return recommendation

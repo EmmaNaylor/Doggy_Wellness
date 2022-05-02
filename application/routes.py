@@ -6,7 +6,7 @@ from flask import render_template, request, jsonify, escape, url_for, redirect
 from application import service
 from application import app
 from application.forms.signUp import SignUpForm
-from application.forms.booking import bookingForm
+from application.forms.booking import BookingForm
 from application.models.activity import Activity
 from application.models.customer import Customer
 from application.models.dog import Dog
@@ -14,6 +14,7 @@ from application.models.member import Member
 from application.models.booking import Booking
 from application.models.event_info import Event
 from application.forms.login import LoginForm
+from application.forms.recommendation_form import Recommendation_Form
 from application.forms.register import RegisterForm
 from flask_bootstrap import Bootstrap
 from wtforms_sqlalchemy.fields import QuerySelectField
@@ -35,7 +36,7 @@ def login():
                 if check_password_hash(member.user_password, form.password.data):
                     login_user(member)
                     return redirect(url_for('dashboard'))
-            return "Invalid username or password"
+            return  "Invalid username or password"
     return render_template('login', form=form)
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -58,7 +59,8 @@ def signup():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard', title="Dashboard", user=current_user.email)
+    user = current_user.id
+    return render_template('dashboard', title="Dashboard", user=user)
 
 @app.route('/logout')
 @login_required
@@ -66,9 +68,22 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/recommendations', methods=['GET'])
+@app.route('/recommendations', methods=['GET', 'POST'])
 def recommendations():
-    return render_template("recommendations.html", title="Recommendations")
+    form = Recommendation_Form()
+    if request.method == 'POST' and form.validate():
+        form = Recommendation_Form()
+        dog_name = form.dog_name.data
+        breed = form.breed.data
+        age = form.age.data
+        size = form.size.data
+        temperament = form.temperament.data
+        amount = service.size_check(size)
+        recommendation = service.fav_class(temperament)
+        return render_template('recommendations', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament, amount=amount, recommendation=recommendation)
+    return render_template('recommendations', form=form)
+
+
 
 
 @app.route('/activity', methods=['GET'])
@@ -126,9 +141,9 @@ def home():
 
 @app.route('/classes', methods=['GET', 'POST'])
 def booking():
-    form = bookingForm()
+    form = BookingForm()
     if request.method == 'POST':
-            form = bookingForm()
+            form = BookingForm()
             first_name = form.first_name.data
             last_name = form.last_name.data
             email = form.email.data

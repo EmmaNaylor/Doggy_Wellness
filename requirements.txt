@@ -11,3 +11,4 @@ flask-bootstrap
 flask_login
 werkzeug==2.1.2
 email-validator
+cryptography
