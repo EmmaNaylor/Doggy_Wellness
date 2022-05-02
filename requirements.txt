@@ -1,13 +1,14 @@
 flask-sqlalchemy
-flask==2.1.1
+flask==2.1.2
 flask-wtf
 pymysql
 WTForms==3.0.1
-WTForms_sqlalchemy
-SQLAlchemy==1.4.35
+SQLAlchemy==1.4.36
 Flask-Assets
 mysql-connector-python
 flask-bootstrap
 flask_login
 werkzeug==2.1.2
 email-validator
+cryptography
+WTForms_sqlalchemy
