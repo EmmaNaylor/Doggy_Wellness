@@ -21,7 +21,7 @@ class Dog(db.Model):
     age = db.Column(db.Integer, nullable=True)
     size = db.Column(db.String(12), nullable=True)
     energy_level = db.Column(db.String(12), nullable=True)
-    temperament =  db.Column(db.Integer, nullable=True)
+    temperament = db.Column(db.Integer, nullable=True)
     dog_owner = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
     dog_bookings = db.relationship('Booking', backref='dog', lazy=True)
 
