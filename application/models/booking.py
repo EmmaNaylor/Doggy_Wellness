@@ -1,7 +1,8 @@
-from application import db
 from dataclasses import dataclass
-from sqlalchemy.orm import relationship
+
 from sqlalchemy.ext.declarative import declarative_base
+
+from application import db
 
 Base = declarative_base()
 
@@ -18,5 +19,6 @@ class Booking(db.Model):
     customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
     activity_id = db.Column(db.Integer, db.ForeignKey("activity.id"), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey("event_info.id"), nullable=False)
-    dog_name = db.Column(db.Integer, db.ForeignKey("dog.id"), nullable=False)
+    dog_name = db.Column(db.Integer, nullable=False)
+
 

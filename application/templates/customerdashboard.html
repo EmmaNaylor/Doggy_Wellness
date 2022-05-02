@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2 class="section__title-center">
+        Welcome to your Dashboard
+</h2>
+
+
+<section class="product section container" id="products">
+    <h3> Your Upcoming Classes </h3>
+    <table id="data" class="table table-striped" class="table-responsive">
+        <thead>
+        <tr>
+            <th>Booking Reference</th>
+            <th>Class</th>
+            <th>Activity Type</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>Duration</th>
+            <th>Location</th>
+            <th>Supervision</th>
+            <th>Dog Name</th>
+            <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer, booking, event, activity in customer_bookings %}
+        <tr>
+            <td>B000{{booking.id}}</td>
+            <td>{{activity.activity_name}}</td>
+            <td>{{activity.activity_type}}</td>
+            <td>{{event.event_date}}</td>
+            <td>{{event.start_time}}</td>
+            <td>{{event.duration}}</td>
+            <td>{{event.location}}</td>
+            <td>{{activity.supervision}}</td>
+            <td>{{booking.dog_name}}</td>
+            <td>&#163;{{event.cost}}.00</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          ],
+      });
+    });
+
+    </script>
+
+</section>
+
+{% endblock %}
+
+

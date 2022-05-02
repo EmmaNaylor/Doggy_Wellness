@@ -38,6 +38,7 @@ def login():
             return "Invalid username or password"
     return render_template('login', form=form)
 
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = RegisterForm()
@@ -55,16 +56,19 @@ def signup():
             return redirect(url_for('dashboard'))
     return render_template('signup', form=form)
 
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
     return render_template('dashboard', title="Dashboard", user=current_user.email)
+
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
 
 @app.route('/recommendations', methods=['GET'])
 def recommendations():
@@ -78,6 +82,23 @@ def show_activities():
     if len(details) == 0:
         error = "There are no activities to display"
     return render_template('test.html', activities=details)
+
+
+@app.route('/admin-dashboard', methods=['GET'])
+def display_all_bookings():
+    all_bookings = service.display_all_bookings()
+    return render_template('admindashboard.html', all_bookings=all_bookings)
+
+
+@app.route('/customer-dashboard', methods=['GET'])
+def display_customer_bookings():
+    customer_bookings = service.display_customer_bookings()
+    return render_template('customerdashboard.html', customer_bookings=customer_bookings)
+
+
+@app.route('/layout')
+def layout():
+    return render_template('layout.html')
 
 
 @app.route("/recommend")
@@ -128,27 +149,26 @@ def home():
 def booking():
     form = bookingForm()
     if request.method == 'POST':
-            form = bookingForm()
-            first_name = form.first_name.data
-            last_name = form.last_name.data
-            email = form.email.data
-            telephone_number = form.telephone_number.data
-            recaptcha = form.recaptcha
-            dog_name = form.dog_name.data
-            form.activity.query = Activity.query
-            form.event.query = Event.query
-            activity_id = form.activity.data
-            event_id = form.event.data
-            new_customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-            print(new_customer)
-            classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name, customer=new_customer)
-            print(classbooking)
-            dogbooked = Dog(customer=new_customer, dog_name=classbooking.dog_name)
-            print(dogbooked)
-            # service.add_new_customer(customer)
-            service.add_new_booking(new_customer, classbooking, dogbooked)
-            if form.validate_on_submit():
-                return "Thanks! You're signed up!"
+        form = bookingForm()
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        email = form.email.data
+        telephone_number = form.telephone_number.data
+        recaptcha = form.recaptcha
+        dog_name = form.dog_name.data
+        form.activity.query = Activity.query
+        form.event.query = Event.query
+        activity_id = form.activity.data
+        event_id = form.event.data
+        new_customer = Customer(first_name=first_name, last_name=last_name, email=email,
+                                telephone_number=telephone_number)
+        print(new_customer)
+        classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name, customer=new_customer)
+        print(classbooking)
+        dogbooked = Dog(customer=new_customer, dog_name=classbooking.dog_name)
+        print(dogbooked)
+        # service.add_new_customer(customer)
+        service.add_new_booking(new_customer, classbooking, dogbooked)
+        if form.validate_on_submit():
+            return "Thanks! You're signed up!"
     return render_template('classes', form=form)
-
-
