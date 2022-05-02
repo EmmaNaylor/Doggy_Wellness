@@ -72,7 +72,7 @@
 <section class="product section container" id="products">
         <h2 class="section__title-center">
           Hi! <br />
-          Welcome to your Dashboard
+          Welcome to your Dashboard {{user}}!
         </h2>
 </section>
 
