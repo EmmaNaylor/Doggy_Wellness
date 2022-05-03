@@ -2,7 +2,7 @@ import json
 import mysql.connector
 import pymysql
 from flask_wtf import FlaskForm
-from flask import render_template, request, jsonify, escape, url_for, redirect
+from flask import render_template, request, jsonify, escape, url_for, redirect, flash
 from application import service
 from application import app
 from application.forms.signUp import SignUpForm
@@ -23,6 +23,25 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from email_validator import validate_email, EmailNotValidError
 
 
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    form = SignUpForm(request.form)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            flash("Thanks! You're signed up!")
+            redirect(url_for("home"))
+        form = SignUpForm(request.form)
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        email = form.email.data
+        telephone_number = form.telephone_number.data
+        recaptcha = form.recaptcha
+        customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
+        service.add_new_customer(customer)
+    return render_template('index', form=form, title="Home")
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -32,12 +51,16 @@ def login():
         user_password = form.password.data
         if form.validate_on_submit():
             member = Member.query.filter_by(email=form.email.data).first()
-            if member:
-                if check_password_hash(member.user_password, form.password.data):
-                    login_user(member)
-                    return redirect(url_for('dashboard'))
-            return "Invalid username or password"
+            if check_password_hash(member.user_password, form.password.data):
+                login_user(member)
+                if member.email == "theadministator@gmail.com":
+                    return redirect(url_for('display_all_bookings'))
+                else:
+                    return redirect(url_for('display_customer_bookings'))
+            flash("Invalid username or password")
+            return redirect(url_for('login'))
     return render_template('login', form=form)
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -50,23 +73,23 @@ def signup():
             hashed_password = generate_password_hash(form.password.data, method='sha256')
             new_member = Member(email=email, user_password=hashed_password)
             member_check = Member.query.filter_by(email=form.email.data).first()
+            customer_check = Customer.query.filter_by(email=form.email.data).first()
             if member_check:
-                return "Email is already in use"
+                flash("Email is already in use")
+                return redirect(url_for('signup'))
+            if customer_check:
+                new_member = Member(email=email, user_password=hashed_password)
             service.add_new_member(new_member)
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('login'))
     return render_template('signup', form=form)
 
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    user = current_user.id
-    return render_template('dashboard', title="Dashboard", user=user)
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
 
 @app.route('/recommendations', methods=['GET', 'POST'])
 def recommendations():
@@ -82,59 +105,6 @@ def recommendations():
         recommendation = service.fav_class(temperament)
         return render_template('recommendations', form=form, dog_name=dog_name, breed=breed, age=age, size=size, temperament=temperament, amount=amount, recommendation=recommendation)
     return render_template('recommendations', form=form)
-
-
-@app.route('/activity', methods=['GET'])
-def show_activities():
-    error = ""
-    details = service.activities()
-    if len(details) == 0:
-        error = "There are no activities to display"
-    return render_template('test.html', activities=details)
-
-
-@app.route("/recommend")
-def recommend():
-    size = (request.args.get("size", ""))
-    if size:
-        answer = give_recommendation(size)
-    else:
-        answer = ""
-    return (
-            """<form action="" method="get">
-              <input type="text" name="size" />
-              <input type="submit" value="Give me a recommendation">
-              </form>"""
-            + "You should exercise your dog: "
-            + answer
-    )
-
-
-@app.route("/recommendation", methods=['GET', 'POST'])
-def give_recommendation():
-    conn = pymysql.connect(host='localhost', user='root', passwd='password', db='dog_wellness_service')
-    cursor = conn.cursor()
-    cursor.execute('SELECT size FROM dog_category')
-    sizelist = cursor.fetchall()
-    return render_template('testing2.html', sizelist=sizelist)
-
-
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    form = SignUpForm(request.form)
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            return "Thanks! You're signed up!"
-        form = SignUpForm(request.form)
-        first_name = form.first_name.data
-        last_name = form.last_name.data
-        email = form.email.data
-        telephone_number = form.telephone_number.data
-        recaptcha = form.recaptcha
-        customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-        service.add_new_customer(customer)
-    return render_template('index', form=form, title="Home")
 
 
 @app.route('/classes', methods=['GET', 'POST'])
@@ -153,15 +123,68 @@ def booking():
             activity_id = form.activity.data
             event_id = form.event.data
             new_customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-            print(new_customer)
             classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name, customer=new_customer)
             print(classbooking)
             dogbooked = Dog(customer=new_customer, dog_name=classbooking.dog_name)
-            print(dogbooked)
-            # service.add_new_customer(customer)
             service.add_new_booking(new_customer, classbooking, dogbooked)
             if form.validate_on_submit():
-                return "Thanks! You're signed up!"
-    return render_template('classes', form=form)
+                flash("Thanks! You're signed up!")
+                return redirect(url_for('booking'))
+    return render_template('classes', form=form, Title="Classes")
 
 
+@app.route('/admin-dashboard', methods=['GET'])
+@login_required
+def display_all_bookings():
+    all_bookings = service.display_all_bookings()
+    return render_template('admindashboard.html', all_bookings=all_bookings)
+
+
+@app.route('/customer-dashboard', methods=['GET'])
+@login_required
+def display_customer_bookings():
+    user = current_user.linked_customer
+    customer_name = service.name(user)
+    print("name", customer_name)
+    customer_bookings = service.display_customer_bookings(user)
+    return render_template('customerdashboard.html', customer_bookings=customer_bookings, name=customer_name)
+
+
+@app.route('/layout')
+def layout():
+    return render_template('layout.html')
+
+
+# @app.route('/activity', methods=['GET'])
+# def show_activities():
+#     error = ""
+#     details = service.activities()
+#     if len(details) == 0:
+#         error = "There are no activities to display"
+#     return render_template('test.html', activities=details)
+#
+#
+# @app.route("/recommend")
+# def recommend():
+#     size = (request.args.get("size", ""))
+#     if size:
+#         answer = give_recommendation(size)
+#     else:
+#         answer = ""
+#     return (
+#             """<form action="" method="get">
+#               <input type="text" name="size" />
+#               <input type="submit" value="Give me a recommendation">
+#               </form>"""
+#             + "You should exercise your dog: "
+#             + answer
+#     )
+
+
+# @app.route("/recommendation", methods=['GET', 'POST'])
+# def give_recommendation():
+#     conn = pymysql.connect(host='localhost', user='root', passwd='password', db='dog_wellness_service')
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT size FROM dog_category')
+#     sizelist = cursor.fetchall()
+#     return render_template('testing2.html', sizelist=sizelist)

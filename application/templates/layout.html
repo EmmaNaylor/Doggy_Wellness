@@ -1,14 +1,137 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}} - Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <h1>{{ title }} Page</h1>
-{% block body_content %}{% endblock %}
-<hr>
-{% block footer_content %}{% endblock %}
-</body>
+
+ <head>
+     {% block head %}
+     {% endblock %}
+  </head>
+  <body>
+  {% block content %}
+
+    <!--==================== HEADER ====================-->
+    {% block header %}
+      <header class="header" id="header">
+      <nav class="nav container">
+        <a href="/" class="nav__logo">
+         <i><img src="static/img/logo.png"class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="{{ url_for('home')}}" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{ url_for('booking')}}" class="nav__link">Classes</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{ url_for('recommendations')}}" class="nav__link">Recommendations</a>
+            </li>
+              {% if current_user.is_anonymous %}
+            <li class="nav__item">
+              <a href="{{ url_for('login')}}" class="nav__link">Login</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{ url_for('signup')}}" class="nav__link">Signup</a>
+            </li>
+          </ul>
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+        <div class="nav__btns">
+          <!-- Theme change button -->
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+      </nav>
+          {% else %}
+            <li class="nav__item">
+              <a href="{{ url_for('display_customer_bookings')}}" class="nav__link">Dashboard</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{ url_for('logout')}}" class="nav__link">Logout</a>
+            </li>
+            </ul>
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+        <div class="nav__btns">
+          <!-- Theme change button -->
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+          {% endif %}
+      </nav>
+    </header>
+     {% endblock %}
+<!--==================== FOOTER ====================-->
+    {% block footer %}
+    <footer class="footer section">
+      <div class="footer__container container grid">
+        <div class="footer__content">
+          <a href="#" class="footer__logo">
+            <i class="ri-leaf-line footer__logo-icon"></i> Body Pawsitive
+          </a>
+            <div class="footer__subscribe">
+                <h4 class="results" style="text-align: center;">Log in here...</h4>
+                <button class="button button--flex footer__button",  onclick="location.href={{url_for('login')}}">
+                    Go
+                    <i class="ri-arrow-right-up-line button__icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">Our Address</h3>
+
+
+          <ul class="footer__data">
+            <li class="footer__information">123 Sky House</li>
+            <li class="footer__information">Leeds</li>
+            <li class="footer__information">L9 876</li>
+          </ul>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">Contact Us</h3>
+
+          <ul class="footer__data">
+            <li class="footer__information">+999 888 777</li>
+            <li class="footer__information">wooflypeople@email.com</li>
+
+            <div class="footer__social">
+              <a href="https://www.facebook.com/" class="footer__social-link">
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a href="https://www.instagram.com/" class="footer__social-link">
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a href="https://twitter.com/" class="footer__social-link">
+                <i class="ri-twitter-fill"></i>
+              </a>
+            </div>
+          </ul>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">We accept all credit cards</h3>
+
+          <div class="footer__cards">
+            <img src="static/img/card1.png" alt="" class="footer__card" />
+            <img src="static/img/card2.png" alt="" class="footer__card" />
+            <img src="static/img/card3.png" alt="" class="footer__card" />
+            <img src="static/img/card4.png" alt="" class="footer__card" />
+          </div>
+        </div>
+      </div>
+
+      <p class="footer__copy">&#169; Body Pawsitive. All rights reserved.</p>
+    </footer>
+  {% endblock %}
+  {% endblock %}
+  </body>
 </html>

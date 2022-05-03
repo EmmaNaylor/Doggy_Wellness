@@ -2,7 +2,7 @@
 {% block title %}{{Title}}{% endblock %}
 {% block head %}{{ super() }}{% endblock %}
 
-  <body>
+<body>
     {% block content %}
     {% block header %} {{ super() }}
     <meta charset="UTF-8" />
@@ -37,61 +37,62 @@
     <link rel="stylesheet" href="static/css/styles.css"/>
     {% endblock %}
 
+<section class="product section container" id="products">
+    <h2 class="section__title-center">
+        Hi Instructor! <br/>
+        Welcome to your Dashboard
+    </h2>
+    <h3> All Bookings </h3>
+    <br>
+    <table id="data1" class="table table-striped">
+        <thead>
+        <tr>
+            <th class="headerSortDown" class="headerSortUp" >Class</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Dog Name</th>
+            <th>Email</th>
+            <th>Telephone</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer, booking, event, activity in all_bookings %}
+        <tr>
+            <td>{{activity.activity_name}}</td>
+            <td>{{event.event_date}}</td>
+            <td>{{event.start_time}}</td>
+            <td>{{customer.first_name}}</td>
+            <td>{{customer.last_name}}</td>
+            <td>{{booking.dog_name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.telephone_number}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-<!--            Sign up Form-->
-    <main>
-          <section class="contact section container" id="contact">
-        <div class="contact__container grid">
-          <div class="contact__box">
-            <h1 class="contact__title-center">
-             Sign Up
-            </h1><img src="static/img/123456.png" alt="" class="booking__img" />
-          </div>
+    <script>
+    $(document).ready(function () {
+      $('#data1').DataTable({
+        columns: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          {orderable: false},
+          {orderable: false},
+          {orderable: false},
+          ],
+      });
+    });
 
-      <form method='POST' action="/signup" class="contact__form">
-        {{ form.csrf_token }}
-            <div class="contact__inputs">
+    </script>
 
-              <div class="contact__content">
-        {{ form.email (class_="contact__input")}}
-        {{ form.email.label (class_="contact__label") }}
-           {% if error %}
-        <p class=error><strong>Error:</strong> {{ error }}
-            {% endif %}
-                </div>
-              <div class="contact__content">
-        {{ form.password(class_="contact__input")}}
-        {{ form.password.label (class_="contact__label") }}
-            {% if error %}
-        <p class=error><strong>Error:</strong> {{ error }}
-            {% endif %}
-              </div>
+</section>
 
-                <button class="button button--flex" type="submit">
-              Sign Up
-              <i class="ri-arrow-right-up-line button__icon"></i>
-            </button>
-              {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <ul class=flashes>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-                {% endwith %}
-         </div>
-         <div>
-         <h5> Already have an account? </h5>
-         <h5><a href = "{{url_for('login') }}">Login Here</a></h5>
-         </div>
-          </form>
-        </div>
-      </section>
-
-
-    </div> <!-- /container -->
-   </main>
     <footer>
       {% block footer %}{{ super() }}{% endblock %}
     </footer>

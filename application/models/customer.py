@@ -22,5 +22,6 @@ class Customer(db.Model):
     telephone_number = db.Column(db.String(12), nullable=True)
     customer_bookings = db.relationship("Booking", backref="customer", lazy=True)
     dogs = db.relationship("Dog", backref="customer", lazy=True)
+    linked_member = db.relationship("Member", backref="customer", lazy=True)
 
 
