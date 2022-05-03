@@ -423,6 +423,15 @@
               Sign Up
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
           </form>
         </div>
       </section>

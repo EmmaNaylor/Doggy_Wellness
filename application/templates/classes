@@ -217,26 +217,41 @@
               <div class="contact__content">
                 {{ form.first_name (class_="contact__input")}}
                 {{ form.first_name.label (class_="contact__label") }}
+                {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
               </div>
 
               <div class="contact__content">
                 {{ form.last_name (class_="contact__input")}}
                 {{ form.last_name.label (class_="contact__label") }}
+                {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
               </div>
 
               <div class="contact__content">
                 {{ form.email (class_="contact__input")}}
                 {{ form.email.label (class_="contact__label") }}
+                {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
               </div>
 
               <div class="contact__content">
                 {{ form.telephone_number (class_="contact__input")}}
                 {{ form.telephone_number.label (class_="contact__label") }}
+                {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
               </div>
 
               <div class="contact__content">
                 {{ form.dog_name (class_="contact__input")}}
                 {{ form.dog_name.label (class_="contact__label") }}
+                {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
               </div>
 
               <div class="contact__content">
