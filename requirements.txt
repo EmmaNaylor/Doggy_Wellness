@@ -12,3 +12,4 @@ werkzeug==2.1.2
 email-validator
 cryptography
 WTForms_sqlalchemy
+Flask-Navigation

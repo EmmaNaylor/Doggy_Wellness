@@ -73,9 +73,12 @@ def signup():
             hashed_password = generate_password_hash(form.password.data, method='sha256')
             new_member = Member(email=email, user_password=hashed_password)
             member_check = Member.query.filter_by(email=form.email.data).first()
+            customer_check = Customer.query.filter_by(email=form.email.data).first()
             if member_check:
                 flash("Email is already in use")
                 return redirect(url_for('signup'))
+            if customer_check:
+                new_member = Member(email=email, user_password=hashed_password)
             service.add_new_member(new_member)
             return redirect(url_for('login'))
     return render_template('signup', form=form)
@@ -120,16 +123,14 @@ def booking():
             activity_id = form.activity.data
             event_id = form.event.data
             new_customer = Customer(first_name=first_name, last_name=last_name, email=email, telephone_number=telephone_number)
-            print(new_customer)
             classbooking = Booking(activity_id=activity_id, event_id=event_id, dog_name=dog_name, customer=new_customer)
             print(classbooking)
             dogbooked = Dog(customer=new_customer, dog_name=classbooking.dog_name)
-            print(dogbooked)
-            # service.add_new_customer(customer)
             service.add_new_booking(new_customer, classbooking, dogbooked)
             if form.validate_on_submit():
-                return "Thanks! You're signed up!"
-    return render_template('classes', form=form)
+                flash("Thanks! You're signed up!")
+                return redirect(url_for('booking'))
+    return render_template('classes', form=form, Title="Classes")
 
 
 @app.route('/admin-dashboard', methods=['GET'])

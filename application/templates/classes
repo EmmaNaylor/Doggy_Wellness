@@ -1,77 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+{% extends "layout.html" %}
+{% block title %}{{Title}}{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+
+  <body>
+    {% block content %}
+    {% block header %} {{ super() }}
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-
-    <!--=============== REMIX ICONS ===============-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--=============== REMIX ICONS ===============-->
     <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-      rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+            rel="stylesheet"
     />
 
     <!--BOOTSTRAP-->
-        <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
     />
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
     ></script>
 
+    <!--JAVASCRIPT -->
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="static/css/styles.css" />
-
-    <title>Classes</title>
-  </head>
-  <body>
-    <!--==================== HEADER ====================-->
-    {% block body_content %}
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="/" class="nav__logo">
-         <i><img src="static/img/logo.png" class="ri-leaf-line nav__logo-icon"></i> Body Pawsitive
-        </a>
-
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="/" class="nav__link">Home</a>
-            </li>
-            <li class="nav__item">
-              <a href="recommendations" class="nav__link">Recommendations</a>
-            </li>
-            <li class="nav__item">
-              <a href="classes" class="nav__link">Classes</a>
-            </li>
-            <li class="nav__item">
-              <a href="login" class="nav__link">Login</a>
-            </li>
-            <li class="nav__item">
-              <a href="signup" class="nav__link">Signup</a>
-            </li>
-          </ul>
-
-          <div class="nav__close" id="nav-close">
-            <i class="ri-close-line"></i>
-          </div>
-        </div>
-
-        <div class="nav__btns">
-          <!-- Theme change button -->
-          <i class="ri-moon-line change-theme" id="theme-button"></i>
-
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <link rel="stylesheet" href="static/css/styles.css"/>
+    {% endblock %}
 
     <main class="main">
 
@@ -257,116 +221,32 @@
               <div class="contact__content">
                 <label class="visually-hidden" for="autoSizingSelect">Class</label>
                 {{ form.activity (class_="form-select", id="autoSizingSelect") }}
-<!--    <select class="form-select" id="autoSizingSelect">-->
-<!--      <option selected>Class</option>-->
-<!--      <option value="1">Yoga</option>-->
-<!--      <option value="2">Canine Cardio</option>-->
-<!--      <option value="3">Canine Circuit Training</option>-->
-<!--      <option value="4">Doggy Zumba</option>-->
-<!--      <option value="5">Park Run</option>-->
-<!--      <option value="6">Boxer-cise</option>-->
-<!--    </select>-->
-  </div>
-  <div class="contact__content">
+
+              </div>
+              <div class="contact__content">
                 <label class="visually-hidden" for="autoSizingSelect">Date</label>
-    {{ form.event (class_="form-select", id="autoSizingSelect") }}
-<!--    <select class="form-select" id="autoSizingSelect">-->
-<!--      <option selected>Date</option>-->
-<!--      <option value="1">02/05/22</option>-->
-<!--      <option value="2">03/05/22</option>-->
-<!--      <option value="3">04/05/22</option>-->
-<!--      <option value="4">05/05/22</option>-->
-<!--      <option value="5">06/05/22</option>-->
-<!--    </select>-->
-<!--  </div>-->
-<!--  <div class="contact__content">-->
-<!--                <label class="visually-hidden" for="autoSizingSelect">Time</label>-->
-<!--    <select class="form-select" id="autoSizingSelect">-->
-<!--      <option selected>Time</option>-->
-<!--      <option value="1">9am</option>-->
-<!--      <option value="1">1pm</option>-->
-<!--      <option value="2">5pm</option>-->
-<!--    </select>-->
-<!--    <br>-->
+                {{ form.event (class_="form-select", id="autoSizingSelect") }}
 
             <button class="button button--flex" type="submit">
               Book
               <i class="ri-arrow-right-up-line button__icon"></i>
             </button>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
          </div>
           </form>
         </div>
       </section>
 
-{% endblock %}
-
-      <!--==================== FOOTER ====================-->
-      {% block footer_content %}
-    <footer class="footer section">
-      <div class="footer__container container grid">
-        <div class="footer__content">
-          <a href="#" class="footer__logo">
-            <i class="ri-leaf-line footer__logo-icon"></i> Body Pawsitive
-          </a>
-                    <h3 class="footer__title">
-                        Subscribe to our newsletter <br> to stay update
-                    </h3>
-
-                    <div class="footer__subscribe">
-                        <input type="email" placeholder="Enter your email" class="footer__input">
-
-                        <button class="button button--flex footer__button">
-                            Subscribe
-                            <i class="ri-arrow-right-up-line button__icon"></i>
-                        </button>
-                    </div>
-                </div>
-
-        <div class="footer__content">
-          <h3 class="footer__title">Our Address</h3>
-
-          <ul class="footer__data">
-            <li class="footer__information">123 Sky House</li>
-            <li class="footer__information">Leeds</li>
-            <li class="footer__information">L9 876</li>
-          </ul>
-        </div>
-
-        <div class="footer__content">
-          <h3 class="footer__title">Contact Us</h3>
-
-          <ul class="footer__data">
-            <li class="footer__information">+999 888 777</li>
-            <li class="footer__information">user@email.com</li>
-
-            <div class="footer__social">
-              <a href="https://www.facebook.com/" class="footer__social-link">
-                <i class="ri-facebook-fill"></i>
-              </a>
-              <a href="https://www.instagram.com/" class="footer__social-link">
-                <i class="ri-instagram-line"></i>
-              </a>
-              <a href="https://twitter.com/" class="footer__social-link">
-                <i class="ri-twitter-fill"></i>
-              </a>
-            </div>
-          </ul>
-        </div>
-
-        <div class="footer__content">
-          <h3 class="footer__title">We accept all credit cards</h3>
-
-          <div class="footer__cards">
-            <img src="static/img/card1.png" alt="" class="footer__card" />
-            <img src="static/img/card2.png" alt="" class="footer__card" />
-            <img src="static/img/card3.png" alt="" class="footer__card" />
-            <img src="static/img/card4.png" alt="" class="footer__card" />
-          </div>
-        </div>
-      </div>
-
-      <p class="footer__copy">&#169; Body Pawsitive. All rigths reserved.</p>
-      {% endblock %}
+    <footer>
+      {% block footer %}{{ super() }}{% endblock %}
     </footer>
 
     <!--=============== SCROLL UP ===============-->
@@ -379,6 +259,6 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="static/js/main.js"></script>
-    </main>
+    {% endblock %}
   </body>
 </html>
