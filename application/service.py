@@ -81,6 +81,8 @@ def fav_class(dog_energy):
 
 def name(user):
     customer = db.session.query(Customer).filter(Customer.id == user).first()
+    if not customer:
+        return "Larry"
     return customer.first_name
 
 def display_all_bookings():

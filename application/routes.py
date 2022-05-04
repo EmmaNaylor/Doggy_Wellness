@@ -144,6 +144,7 @@ def display_all_bookings():
 @login_required
 def display_customer_bookings():
     user = current_user.linked_customer
+    print(user)
     customer_name = service.name(user)
     print("name", customer_name)
     customer_bookings = service.display_customer_bookings(user)
